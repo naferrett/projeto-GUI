@@ -10,70 +10,68 @@ import javax.swing.JPanel;
 
 class BackgroundPanel extends JPanel {
     private static final long serialVersionUID = 1L;
-    private int               minLinhas;
-    private int               maxLinhas;
-    private int               maxAtratores;
-    private Color             corFrente;
-    private Color             corFundo;
-    private Point             atratores[];
-    private Random            rand;
+    private int minLines;
+    private int maxLines;
+    private int maxAtratores;
+    private Color foregroundColor;
+    private Color backgroundColor;
+    private Point[] atratores;
+    private Random rand;
 
     BackgroundPanel() {
         super();
 
-        this.minLinhas = 12;
-        this.maxLinhas = 48;
+        this.minLines = 12;
+        this.maxLines = 48;
         this.maxAtratores = 4;
-        this.corFrente = Color.white;
-        this.corFundo = Color.lightGray;
+        this.foregroundColor = Color.white;
+        this.backgroundColor = Color.lightGray;
         this.atratores = new Point[maxAtratores];
         this.rand = new Random();
 
-        this.setForeground(corFrente);
-        this.setBackground(corFundo);
+        this.setForeground(foregroundColor);
+        this.setBackground(backgroundColor);
     }
 
     @Override
-    public void paint(Graphics canvasOriginal) {
-        super.paint(canvasOriginal);
-        Graphics2D canvas = (Graphics2D) canvasOriginal;
+    protected void paintComponent(Graphics originalCanvas) {
+        super.paintComponent(originalCanvas);
+        Graphics2D canvas = (Graphics2D) originalCanvas;
 
-        setForeground(corFrente);
-        setBackground(corFundo);
+        canvas.setColor(foregroundColor);
+        setBackground(backgroundColor);
 
         int maxX = this.getWidth();
         int maxY = this.getHeight();
 
-        int limite = this.minLinhas + rand.nextInt(this.maxLinhas - this.minLinhas);
+        int limit = this.minLines + rand.nextInt(this.maxLines - this.minLines);
 
-        for (int qtasLinhas = 0; qtasLinhas < limite; qtasLinhas++)
-        {
-            for (Point atratorCorrente : atratores)
-            {
-                if (atratorCorrente != null)
-                {
+        for (int lineCount = 0; lineCount < limit; lineCount++) {
+            for (Point atratorCorrente : atratores) {
+                if (atratorCorrente != null) {
                     canvas.drawLine((int) atratorCorrente.getX(), (int) atratorCorrente.getY(), rand.nextInt(maxX), rand.nextInt(maxY));
                 }
             }
         }
     }
 
-    void setCorFrente(Color novaCor)
-    {
-        this.corFrente = novaCor;
+    public void setForegroundColor(Color newColor) {
+        this.foregroundColor = newColor;
+        this.setForeground(newColor);
+        repaint();
     }
 
-    void setCorFundo(Color novaCor)
-    {
-        this.corFundo = novaCor;
+    public void setBackgroundColor(Color newColor) {
+        this.backgroundColor = newColor;
+        setBackground(newColor);
+        repaint();
     }
 
-    public void setNewAttractor(Point novoAtrator)
-    {
-        for (int indice = 0; indice < (atratores.length - 1); indice++)
-        {
-            atratores[indice] = atratores[indice + 1];
+    public void setNewAttractor(Point newAttractor) {
+        for (int index = 0; index < (atratores.length - 1); index++) {
+            atratores[index] = atratores[index + 1];
         }
-        atratores[atratores.length - 1] = novoAtrator;
+        atratores[atratores.length - 1] = newAttractor;
+        repaint();
     }
 }

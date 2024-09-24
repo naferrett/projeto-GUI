@@ -44,8 +44,8 @@ class MainWindow extends JFrame implements ActionListener, Runnable {
     private JScrollPane scrollPane;
     private WindowListenerClass windowEventListener;
     private MouseListenerClass mouseEventListener;
-    private BackgroundPanel backgroundPannel;
-    private JPanel statusPannel;
+    private BackgroundPanel backgroundPanel;
+    private JPanel statusPanel;
 
     MainWindow() throws HeadlessException {
         super(SystemInfo.getVersionName());
@@ -53,9 +53,9 @@ class MainWindow extends JFrame implements ActionListener, Runnable {
         this.threadRunning = false;
 
         windowConfig();
+        initAddComponents();
         createAddToMenu();
         adicionaOuvinteMenus(this);
-        initAddComponents();
     }
 
     private void windowConfig() {
@@ -76,38 +76,46 @@ class MainWindow extends JFrame implements ActionListener, Runnable {
     }
 
     private void initAddComponents() {
+        initBackgroundPanel();
         initStatusPanel();
+        initTextArea();
         initScrollPane();
         initListeners();
     }
 
+    private void initBackgroundPanel() {
+        this.backgroundPanel = new BackgroundPanel();
+    }
+
     private void initStatusPanel() {
-        this.statusPannel = new JPanel();
+        this.statusPanel = new JPanel();
         this.labelStatus = new JLabel();
-        this.statusPannel.add(labelStatus);
-        this.statusPannel.setBackground(Color.gray);
-        this.statusPannel.setBorder(BorderFactory.createEtchedBorder());
-        this.add(statusPannel, BorderLayout.SOUTH);
+        this.statusPanel.add(labelStatus);
+        this.statusPanel.setBackground(Color.gray);
+        this.statusPanel.setBorder(BorderFactory.createEtchedBorder());
+        this.add(statusPanel, BorderLayout.SOUTH);
     }
 
     private void initScrollPane() {
-        this.backgroundPannel = new BackgroundPanel();
-        this.scrollPane = new JScrollPane(backgroundPannel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        this.backgroundPanel = new BackgroundPanel();
+        this.scrollPane = new JScrollPane(backgroundPanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         this.add(scrollPane, BorderLayout.CENTER);
     }
 
     private void initTextArea() {
         fileText = new JTextArea();
-        fileText.setEditable(false); // Impede a edição se for necessário
-        this.add(new JScrollPane(fileText), BorderLayout.CENTER); // Adiciona a área de texto na interface
+        fileText.setEditable(false);
+        fileHandler = new FileHandler(fileText);
+        this.scrollPane = new JScrollPane(fileText);
+        this.add(new JScrollPane(fileText), BorderLayout.CENTER);
     }
 
     private void initListeners() {
         windowEventListener = new WindowListenerClass(this);
         this.addWindowListener(windowEventListener);
 
-        mouseEventListener = new MouseListenerClass(this.backgroundPannel);
-        backgroundPannel.addMouseListener(mouseEventListener);
+        mouseEventListener = new MouseListenerClass(this.backgroundPanel);
+        backgroundPanel.addMouseListener(mouseEventListener);
     }
 
     void setStatusMessage(String message)
@@ -124,7 +132,7 @@ class MainWindow extends JFrame implements ActionListener, Runnable {
         serverDispatcher.start();
     }
 
-    // Fazer uma classe
+    // Fazer uma classe?
     private void createAddToMenu() {
         createFileMenu();
         createConfigMenu();
@@ -167,9 +175,11 @@ class MainWindow extends JFrame implements ActionListener, Runnable {
 
         // Itens do submenu
         menuItemPattern1 = new JMenuItem("Padrão 1");
+        menuItemPattern1.addActionListener(this);
         menuItemChoosePattern.add(menuItemPattern1);
 
         menuItemPattern2 = new JMenuItem("Padrão 2");
+        menuItemPattern2.addActionListener(this);
         menuItemChoosePattern.add(menuItemPattern2);
 
         configMenu.add(menuItemChoosePattern);
@@ -182,12 +192,15 @@ class MainWindow extends JFrame implements ActionListener, Runnable {
 
         // Itens do submenu
         menuItemPink = new JMenuItem("Rosa");
+        menuItemPink.addActionListener(this);
         menuItemChooseColor.add(menuItemPink);
 
         menuItemRed = new JMenuItem("Vermelho");
+        menuItemRed.addActionListener(this);
         menuItemChooseColor.add(menuItemRed);
 
         menuItemBlue = new JMenuItem("Azul");
+        menuItemBlue.addActionListener(this);
         menuItemChooseColor.add(menuItemBlue);
 
         configMenu.add(menuItemChooseColor);
@@ -200,9 +213,11 @@ class MainWindow extends JFrame implements ActionListener, Runnable {
 
         // Itens do submenu
         menuItemSpeed1x = new JMenuItem("Velocidade 1x");
+        menuItemSpeed1x.addActionListener(this);
         menuItemChooseSpeed.add(menuItemSpeed1x);
 
         menuItemSpeed2x = new JMenuItem("Velocidade 2x");
+        menuItemSpeed2x.addActionListener(this);
         menuItemChooseSpeed.add(menuItemSpeed2x);
 
         configMenu.add(menuItemChooseSpeed);
@@ -242,6 +257,7 @@ class MainWindow extends JFrame implements ActionListener, Runnable {
         for (Component alvo : menuPrincipal.getMenuComponents()) {
             if (alvo instanceof JMenuItem) {
                 ((JMenuItem) alvo).addActionListener(ouvinte);
+                //System.out.println("Ouvinte adicionado para: " + ((JMenuItem) alvo).getText());
             }
         }
     }
@@ -249,33 +265,38 @@ class MainWindow extends JFrame implements ActionListener, Runnable {
     @Override
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == menuItemOpenFile) {
+            this.setStatusMessage("Opção 'Abrir Arquivo' selecionada!");
+
             fileChooser = new JFileChooser();
             fileChooser.setDialogTitle("Procurar Arquivo");
             fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
 
-            FileNameExtensionFilter filter = new FileNameExtensionFilter("Arquivo de texto", "txt", "pdf"); // Filtro pra só abrir pdf
-
+            FileNameExtensionFilter filter = new FileNameExtensionFilter("Arquivo de texto", "txt", "pdf");
             fileChooser.setFileFilter(filter);
+
             int returnValue = fileChooser.showOpenDialog(this);
 
             if(returnValue == JFileChooser.APPROVE_OPTION) {
                 currentFile = fileChooser.getSelectedFile();
-                initTextArea(); // por que não está iniciando
                 try {
-                    new FileHandler(fileText).openFile(currentFile);
+                    fileHandler.openFile(currentFile);
+                    this.setStatusMessage("Arquivo aberto: " + currentFile.getName());
                 } catch (IOException ex) {
                     JOptionPane.showMessageDialog(this, "Erro ao abrir o arquivo.", "Erro", JOptionPane.ERROR_MESSAGE);
                 }
             }
-
-            this.setStatusMessage("Opção 'Abrir Arquivo' selecionada!");
         }
 
         if (event.getSource() == menuItemCloseFile) {
-            fileHandler.closeFile(); // Fecha o arquivo limpando a área de texto
-            initAddComponents();
-            currentFile = null;
             this.setStatusMessage("Opção 'Fechar Arquivo' selecionada!");
+
+            try {
+                fileText.setText(""); // Limpa o conteúdo do JTextArea
+                this.setStatusMessage("Arquivo fechado: " + currentFile.getName());
+                currentFile = null;
+            } catch (NullPointerException ex) {
+                JOptionPane.showMessageDialog(this, "Erro ao fechar o arquivo.", "Erro", JOptionPane.ERROR_MESSAGE);
+            }
         }
 
         if (event.getSource() == menuItemExit) {
@@ -292,20 +313,21 @@ class MainWindow extends JFrame implements ActionListener, Runnable {
             this.setStatusMessage("Opção 'Sobre' selecionada!");
         }
 
-//      if (event.getSource() == menuItemRed)
-//         {
-//         backgroundPannel.setCorFundo(Color.red);
-//         }
-//
-//      if (event.getSource() == menuItemPink)
-//         {
-//         backgroundPannel.setCorFundo(new Color(32, 107, 57));
-//         }
-//
-//      if (event.getSource() == menuItemBlue)
-//         {
-//         backgroundPannel.setCorFundo(Color.blue);
-//         }
+        if (event.getSource() == menuItemRed) {
+            System.out.println("Evento capturado: Vermelho");
+            backgroundPanel.setBackgroundColor(new Color(255,99,71));
+            this.setStatusMessage("Cor de fundo alterada para 'Vermelho'!");
+        }
+
+        if (event.getSource() == menuItemPink) {
+            backgroundPanel.setBackgroundColor(new Color(255,192,203));
+            this.setStatusMessage("Cor de fundo alterada para 'Rosa'!");
+        }
+
+        if (event.getSource() == menuItemBlue) {
+            backgroundPanel.setBackgroundColor(new Color(135,206,250));
+            this.setStatusMessage("Cor de fundo alterada para 'Azul'!");
+        }
     }
 
     void exitInterface() {
@@ -317,7 +339,7 @@ class MainWindow extends JFrame implements ActionListener, Runnable {
     public void run() {
         while (this.threadRunning) {
             // Aqui acontece a atualizacao da tela
-            backgroundPannel.repaint();
+            backgroundPanel.repaint();
             try {
                 // Pausa de 1 seg (1.000 milisegundos) para evitar efeitos indesej�veis na composicao da tela
                 Thread.sleep(1000);

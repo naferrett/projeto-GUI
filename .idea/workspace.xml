@@ -4,26 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8dcb2505-7e65-4379-a36f-0559df32cad7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/guiApp/BackgroundPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/guiApp/FileHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/guiApp/ImageDisplayPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/guiApp/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/guiApp/MainWindow.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/guiApp/MessageScreen.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/guiApp/MouseListenerClass.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/guiApp/SystemInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/guiApp/WindowListenerClass.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/iconeuni.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/logouni.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/system.png" afterDir="false" />
+    <list default="true" id="8dcb2505-7e65-4379-a36f-0559df32cad7" name="Changes" comment="first commit - adding project version 1.0.1">
+      <change afterPath="$PROJECT_DIR$/src/main/java/teste/ColorChangingGUIExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/guiApp/BackgroundPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/guiApp/BackgroundPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/guiApp/FileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/guiApp/FileHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/guiApp/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/guiApp/MainWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/guiApp/SystemInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/guiApp/SystemInfo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +40,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.ColorChangingGUIExample.executor": "Run",
     "Application.Main.executor": "Run",
     "Application.guiApp.Main.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
@@ -60,13 +48,14 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/nathf/OneDrive/Documentos/unicamp/matérias/POO II/projeto-dele",
+    "last_opened_file_path": "C:/Users/nathf/OneDrive/Documentos/unicamp/matérias/POO II/demonstracao_gui_basica 104",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "onboarding.tips.debug.path": "C:/Users/nathf/OneDrive/Documentos/unicamp/matérias/POO II/Projeto-I-GUI/src/main/java/gui/app/Main.java",
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -81,6 +70,19 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.guiApp.Main">
+    <configuration name="ColorChangingGUIExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="teste.ColorChangingGUIExample" />
+      <module name="Projeto-I-GUI" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="teste.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="gui.app.Main" />
       <module name="Projeto-I-GUI" />
@@ -110,6 +112,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.guiApp.Main" />
+        <item itemvalue="Application.ColorChangingGUIExample" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -131,12 +134,28 @@
       <updated>1727114948303</updated>
       <workItem from="1727114949415" duration="3142000" />
       <workItem from="1727118111066" duration="24000" />
-      <workItem from="1727123152846" duration="2156000" />
+      <workItem from="1727123152846" duration="3103000" />
+      <workItem from="1727130432594" duration="3575000" />
+      <workItem from="1727134395179" duration="189000" />
+      <workItem from="1727181404193" duration="5097000" />
     </task>
+    <task id="LOCAL-00001" summary="first commit - adding project version 1.0.1">
+      <option name="closed" value="true" />
+      <created>1727125518050</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1727125518050</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="first commit - adding project version 1.0.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="first commit - adding project version 1.0.1" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

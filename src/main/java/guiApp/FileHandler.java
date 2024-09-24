@@ -25,7 +25,7 @@ class FileHandler {
     }
 
     public void closeFile() {
-        fileText.setText(""); // Limpa a área de texto quando o arquivo for fechado
+        fileText.setText("");
     }
 }
 
