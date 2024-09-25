@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8dcb2505-7e65-4379-a36f-0559df32cad7" name="Changes" comment="file loaded into the screen">
-      <change afterPath="$PROJECT_DIR$/src/main/java/teste/MinimalExample.java" afterDir="false" />
+    <list default="true" id="8dcb2505-7e65-4379-a36f-0559df32cad7" name="Changes" comment="adjusting jlabel">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/guiApp/FileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/guiApp/FileHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/guiApp/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/guiApp/MainWindow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -152,7 +149,8 @@
       <workItem from="1727130432594" duration="3575000" />
       <workItem from="1727134395179" duration="189000" />
       <workItem from="1727181404193" duration="12114000" />
-      <workItem from="1727217989183" duration="5355000" />
+      <workItem from="1727217989183" duration="7478000" />
+      <workItem from="1727268628948" duration="296000" />
     </task>
     <task id="LOCAL-00001" summary="first commit - adding project version 1.0.1">
       <option name="closed" value="true" />
@@ -178,7 +176,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727222939982</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="adjusting jlabel">
+      <option name="closed" value="true" />
+      <created>1727223671030</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1727223671031</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -188,7 +194,8 @@
     <MESSAGE value="first commit - adding project version 1.0.1" />
     <MESSAGE value="background color change options working" />
     <MESSAGE value="file loaded into the screen" />
-    <option name="LAST_COMMIT_MESSAGE" value="file loaded into the screen" />
+    <MESSAGE value="adjusting jlabel" />
+    <option name="LAST_COMMIT_MESSAGE" value="adjusting jlabel" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

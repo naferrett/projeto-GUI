@@ -80,12 +80,21 @@ class MainWindow extends JFrame implements ActionListener, Runnable {
 
         setVisible(true);
     }
-
     private void initBackgroundPanel() {
         this.backgroundPanel = new BackgroundPanel();
-        JLabel label = new JLabel("Arquivo carregado:");
+        this.backgroundPanel.setLayout(new GridBagLayout());
+
+        GridBagConstraints gbc = new GridBagConstraints();
+
+        JLabel label = new JLabel("Arquivo de texto:");
         label.setLabelFor(fileText);
-        this.backgroundPanel.add(label, BorderLayout.NORTH);
+
+        gbc.fill = GridBagConstraints.CENTER;
+        gbc.gridx = 0; // 'gridx' e 'gridy' posicionam o elemento em relação aos eixos posicionados ao centro?
+        gbc.gridy = 0;
+        gbc.insets = new Insets(20, 10, 20, 10); // Padding interno do elemento em relação ao panel
+        //gbc.weightx = 1.0;
+        this.backgroundPanel.add(label, gbc);
     }
 
     private void initStatusPanel() {
@@ -103,16 +112,23 @@ class MainWindow extends JFrame implements ActionListener, Runnable {
     }
 
     private void initTextArea() {
-
         fileText = new JTextArea();
         fileText.setEditable(false);
         fileText.setLineWrap(true);
         fileText.setWrapStyleWord(true);
-        fileText.setColumns(35);
+        //fileText.setColumns(35);
         fileHandler = new FileHandler(fileText);
         this.scrollPane = new JScrollPane(fileText);
 
-        this.backgroundPanel.add(new JScrollPane(fileText), BorderLayout.CENTER);
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.weightx = 1.0; // Aumenta a caixa de texto na horizontal
+        gbc.weighty = 1.0; // Aumenta a caixa de texto na vertical
+        // gbc.gridx = 0; // Column 0
+        gbc.gridy = 1; // Row 1
+        gbc.fill = GridBagConstraints.BOTH; //Aumenta a caixa em tamanho e largura
+        gbc.insets = new Insets(0, 40, 40, 40);
+
+        this.backgroundPanel.add(new JScrollPane(fileText), gbc);
     }
 
     private void initListeners() {
