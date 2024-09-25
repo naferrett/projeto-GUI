@@ -1,5 +1,6 @@
 package guiApp;
 
+import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -13,8 +14,9 @@ class MouseListenerClass implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent mouseEvent) {
-        referencia.setNewAttractor(mouseEvent.getPoint());
-        referencia.repaint();
+//        referencia.setNewAttractor(mouseEvent.getPoint());
+//        System.out.println(mouseEvent.getPoint());
+//        referencia.repaint();
     }
 
     @Override

@@ -26,12 +26,15 @@ class MainWindow extends JFrame implements ActionListener, Runnable {
     private FileHandler fileHandler;
     private File currentFile;
     private JMenu menuItemChoosePattern;
-    private JMenuItem menuItemPattern1;
-    private JMenuItem menuItemPattern2;
+    private JMenuItem menuItemRectanglePattern;
+    private JMenuItem menuItemTrianglePattern;
+    private JMenuItem menuItemStarPattern;
+    private JMenuItem menuItemNoPattern;
     private JMenu menuItemChooseColor;
     private JMenuItem menuItemBlue;
     private JMenuItem menuItemPink;
     private JMenuItem menuItemRed;
+    private JMenuItem menuItemGray;
     private JMenu menuItemChooseSpeed;
     private JMenuItem menuItemSpeed1x;
     private JMenuItem menuItemSpeed2x;
@@ -51,7 +54,7 @@ class MainWindow extends JFrame implements ActionListener, Runnable {
         windowConfig();
         initAddComponents();
         createAddToMenu();
-        adicionaOuvinteMenus(this);
+        addMenuListeners(this);
     }
 
     private void windowConfig() {
@@ -126,7 +129,7 @@ class MainWindow extends JFrame implements ActionListener, Runnable {
         // gbc.gridx = 0; // Column 0
         gbc.gridy = 1; // Row 1
         gbc.fill = GridBagConstraints.BOTH; //Aumenta a caixa em tamanho e largura
-        gbc.insets = new Insets(0, 40, 40, 40);
+        gbc.insets = new Insets(0, 70, 50, 70);
 
         this.backgroundPanel.add(new JScrollPane(fileText), gbc);
     }
@@ -195,13 +198,21 @@ class MainWindow extends JFrame implements ActionListener, Runnable {
         menuItemChoosePattern.setMnemonic('P');
 
         // Itens do submenu
-        menuItemPattern1 = new JMenuItem("Padrão 1");
-        menuItemPattern1.addActionListener(this);
-        menuItemChoosePattern.add(menuItemPattern1);
+        menuItemRectanglePattern = new JMenuItem("Retângulo");
+        menuItemRectanglePattern.addActionListener(this);
+        menuItemChoosePattern.add(menuItemRectanglePattern);
 
-        menuItemPattern2 = new JMenuItem("Padrão 2");
-        menuItemPattern2.addActionListener(this);
-        menuItemChoosePattern.add(menuItemPattern2);
+        menuItemTrianglePattern = new JMenuItem("Triângulo");
+        menuItemTrianglePattern.addActionListener(this);
+        menuItemChoosePattern.add(menuItemTrianglePattern);
+
+        menuItemStarPattern = new JMenuItem("Estrela");
+        menuItemStarPattern.addActionListener(this);
+        menuItemChoosePattern.add(menuItemStarPattern);
+
+        menuItemNoPattern = new JMenuItem("Limpar");
+        menuItemNoPattern.addActionListener(this);
+        menuItemChoosePattern.add(menuItemNoPattern);
 
         configMenu.add(menuItemChoosePattern);
     }
@@ -223,6 +234,10 @@ class MainWindow extends JFrame implements ActionListener, Runnable {
         menuItemBlue = new JMenuItem("Azul");
         menuItemBlue.addActionListener(this);
         menuItemChooseColor.add(menuItemBlue);
+
+        menuItemGray = new JMenuItem("Cinza");
+        menuItemGray.addActionListener(this);
+        menuItemChooseColor.add(menuItemGray);
 
         configMenu.add(menuItemChooseColor);
     }
@@ -266,19 +281,18 @@ class MainWindow extends JFrame implements ActionListener, Runnable {
         this.setJMenuBar(menuBar);
     }
 
-    void adicionaOuvinteMenus(ActionListener ouvinte) {
-        for (Component menuPrincipal : this.getJMenuBar().getComponents()) {
-            if (menuPrincipal instanceof JMenu) {
-                adicionaOuvinteItemMenu(ouvinte, (JMenu) menuPrincipal);
+    void addMenuListeners(ActionListener listener) {
+        for (Component menu : this.getJMenuBar().getComponents()) {
+            if (menu instanceof JMenu) {
+                addMenuItemListener(listener, (JMenu) menu);
             }
         }
     }
 
-    private void adicionaOuvinteItemMenu(ActionListener ouvinte, JMenu menuPrincipal) {
-        for (Component alvo : menuPrincipal.getMenuComponents()) {
-            if (alvo instanceof JMenuItem) {
-                ((JMenuItem) alvo).addActionListener(ouvinte);
-                //System.out.println("Ouvinte adicionado para: " + ((JMenuItem) alvo).getText());
+    private void addMenuItemListener(ActionListener listener, JMenu menuPrincipal) {
+        for (Component target : menuPrincipal.getMenuComponents()) {
+            if (target instanceof JMenuItem) {
+                ((JMenuItem) target).addActionListener(listener);
             }
         }
     }
@@ -286,7 +300,6 @@ class MainWindow extends JFrame implements ActionListener, Runnable {
     @Override
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == menuItemOpenFile) {
-            //System.out.println("'Open File' menu item clicked.");
             this.setStatusMessage("Opção 'Abrir Arquivo' selecionada!");
 
             fileChooser = new JFileChooser();
@@ -300,7 +313,6 @@ class MainWindow extends JFrame implements ActionListener, Runnable {
 
             if (returnValue == JFileChooser.APPROVE_OPTION) {
                 currentFile = fileChooser.getSelectedFile();
-                //System.out.println("Selected file: " + currentFile.getName());
                 try {
                     fileHandler.openFile(currentFile);  // Exibe o conteúdo no JTextArea
                     this.setStatusMessage("Arquivo aberto: " + currentFile.getName());
@@ -326,14 +338,24 @@ class MainWindow extends JFrame implements ActionListener, Runnable {
             exitInterface();
         }
 
-        if (event.getSource() == menuItemHelp) {
-            this.setStatusMessage("Opção 'Ajuda' selecionada!");
-            (new MessageScreen(this, "Ajuda - " + SystemInfo.getVersionName(), SystemInfo.getHelp())).setVisible(true);
+        if (event.getSource() == menuItemRectanglePattern) {
+            this.setStatusMessage("Padrão dinâmico alterado para 'Retângulo'!");
+            backgroundPanel.setPatternRectangle();
         }
 
-        if (event.getSource() == menuItemAbout) {
-            this.setStatusMessage("Opção 'Sobre' selecionada!");
-            (new MessageScreen(this, "Sobre - " + SystemInfo.getVersionName(), SystemInfo.getAbout())).setVisible(true);
+        if (event.getSource() == menuItemTrianglePattern) {
+            this.setStatusMessage("Padrão dinâmico alterado para 'Triângulo'!");
+            backgroundPanel.setPatternTriangle();
+        }
+
+        if (event.getSource() == menuItemStarPattern) {
+            this.setStatusMessage("Padrão dinâmico alterado para 'Estrela'!");
+            backgroundPanel.setPatternStar();
+        }
+
+        if (event.getSource() == menuItemNoPattern) {
+            this.setStatusMessage("Padrão dinâmico removido da tela!");
+            backgroundPanel.setNoPattern();
         }
 
         if (event.getSource() == menuItemRed) {
@@ -350,6 +372,21 @@ class MainWindow extends JFrame implements ActionListener, Runnable {
             this.setStatusMessage("Cor de fundo alterada para 'Azul'!");
             backgroundPanel.setBackgroundColor(new Color(135,206,250));
         }
+
+        if (event.getSource() == menuItemGray) {
+            this.setStatusMessage("Cor de fundo alterada para 'Cinza'!");
+            backgroundPanel.setBackgroundColor(Color.lightGray);
+        }
+
+        if (event.getSource() == menuItemHelp) {
+            this.setStatusMessage("Opção 'Ajuda' selecionada!");
+            (new MessageScreen(this, "Ajuda - " + SystemInfo.getVersionName(), SystemInfo.getHelp())).setVisible(true);
+        }
+
+        if (event.getSource() == menuItemAbout) {
+            this.setStatusMessage("Opção 'Sobre' selecionada!");
+            (new MessageScreen(this, "Sobre - " + SystemInfo.getVersionName(), SystemInfo.getAbout())).setVisible(true);
+        }
     }
 
     void exitInterface() {
@@ -360,14 +397,14 @@ class MainWindow extends JFrame implements ActionListener, Runnable {
     @Override
     public void run() {
         while (this.threadRunning) {
-            // Aqui acontece a atualizacao da tela
             backgroundPanel.repaint();
             try {
-                // Pausa de 1 seg (1.000 milisegundos) para evitar efeitos indesej�veis na composicao da tela
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+
+            backgroundPanel.nextLine();
         }
     }
 
