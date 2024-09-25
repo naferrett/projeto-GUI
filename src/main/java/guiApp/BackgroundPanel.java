@@ -1,3 +1,7 @@
+/* Essa classe é responsável por definir a aparência do fundo da interface
+* gráfica, definindo os desenhos realizados pelas threads em um fundo
+* dinâmico com base nas dimensões da janela. */
+
 package guiApp;
 
 import java.awt.Color;
@@ -108,6 +112,9 @@ class BackgroundPanel extends JPanel {
         attractors[0] = new Point(maxX / 2, marginY);
         attractors[1] = new Point(maxX - marginX, maxY - marginY);
         attractors[2] = new Point(marginX, maxY - marginY);
+
+        currentLine = 0;
+        repaint();
     }
 
     public void setPatternStar() {
@@ -133,7 +140,6 @@ class BackgroundPanel extends JPanel {
         currentLine = 0;
         repaint();
     }
-
 
     public void nextLine() {
         if (this.attractors == null || this.attractors.length == 0) {

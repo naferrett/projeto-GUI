@@ -1,3 +1,7 @@
+/* Essa classe é responsável por executar a abertura e leitura de um arquivo
+* para que ele seja mostrado na interface. Também limpa a tela quando um
+* arquivo é fechado. */
+
 package guiApp;
 
 import java.io.BufferedReader;

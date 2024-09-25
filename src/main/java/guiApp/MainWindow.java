@@ -331,7 +331,7 @@ class MainWindow extends JFrame implements ActionListener, Runnable {
                 this.setStatusMessage("Arquivo fechado: " + currentFile.getName());
                 currentFile = null;
             } catch (NullPointerException ex) {
-                JOptionPane.showMessageDialog(this, "Erro ao fechar o arquivo.", "Erro", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Nenhum arquivo aberto foi encontrado.", "Erro", JOptionPane.ERROR_MESSAGE);
             }
         }
 

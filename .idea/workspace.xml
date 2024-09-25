@@ -4,14 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8dcb2505-7e65-4379-a36f-0559df32cad7" name="Changes" comment="dynamic background working for triangle, star, rectangle patterns">
-      <change afterPath="$PROJECT_DIR$/src/main/java/guiApp/Menu.java" afterDir="false" />
+    <list default="true" id="8dcb2505-7e65-4379-a36f-0559df32cad7" name="Changes" comment="MouseListenerClass unused">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/guiApp/BackgroundPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/guiApp/BackgroundPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/guiApp/FileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/guiApp/FileHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/guiApp/ImageDisplayPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/guiApp/ImageDisplayPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/guiApp/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/guiApp/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/guiApp/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/guiApp/MainWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/guiApp/MessageScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/guiApp/MessageScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/guiApp/MouseListenerClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/guiApp/MouseListenerClass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/guiApp/WindowListenerClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/guiApp/WindowListenerClass.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -117,7 +116,7 @@
       <module name="Projeto-I-GUI" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="guiApp.*" />
+          <option name="PATTERN" value="teste.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -156,7 +155,7 @@
       <workItem from="1727134395179" duration="189000" />
       <workItem from="1727181404193" duration="12114000" />
       <workItem from="1727217989183" duration="7478000" />
-      <workItem from="1727268628948" duration="13970000" />
+      <workItem from="1727268628948" duration="18933000" />
     </task>
     <task id="LOCAL-00001" summary="first commit - adding project version 1.0.1">
       <option name="closed" value="true" />
@@ -206,7 +205,31 @@
       <option name="project" value="LOCAL" />
       <updated>1727285941178</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="removing unnecessary comments">
+      <option name="closed" value="true" />
+      <created>1727288092503</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1727288092503</updated>
+    </task>
+    <task id="LOCAL-00008" summary="modularizing MessageScreen">
+      <option name="closed" value="true" />
+      <created>1727294849000</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1727294849000</updated>
+    </task>
+    <task id="LOCAL-00009" summary="MouseListenerClass unused">
+      <option name="closed" value="true" />
+      <created>1727294943915</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1727294943915</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -230,7 +253,10 @@
     <MESSAGE value="adjusting jlabel" />
     <MESSAGE value="gridlayout to adjust jlabel and textarea" />
     <MESSAGE value="dynamic background working for triangle, star, rectangle patterns" />
-    <option name="LAST_COMMIT_MESSAGE" value="dynamic background working for triangle, star, rectangle patterns" />
+    <MESSAGE value="removing unnecessary comments" />
+    <MESSAGE value="modularizing MessageScreen" />
+    <MESSAGE value="MouseListenerClass unused" />
+    <option name="LAST_COMMIT_MESSAGE" value="MouseListenerClass unused" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -1,4 +1,5 @@
-/* Essa classe é uma janela de diálogo responsável por exibir uma mensagem com uma área de texto, um painel de imagem e um botão de saída. */
+/* Essa classe é uma janela de diálogo responsável por exibir uma mensagem
+* com uma área de texto, um painel de imagem e um botão de saída. */
 
 package guiApp;
 

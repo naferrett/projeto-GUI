@@ -1,3 +1,5 @@
+/* Essa classe é responsável por carreagr e exibir uma imagem. */
+
 package guiApp;
 
 import java.awt.Graphics;
@@ -10,7 +12,7 @@ import javax.swing.JPanel;
 
 class ImageDisplayPanel extends JPanel {
     private static final long serialVersionUID = 1L;
-    private Image currentImage;  // Variável para armazenar a imagem atual a ser exibida
+    private Image currentImage;
     private Graphics2D auxGraphics;
 
     @Override
