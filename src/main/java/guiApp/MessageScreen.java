@@ -1,3 +1,5 @@
+/* Essa classe é uma janela de diálogo responsável por exibir uma mensagem com uma área de texto, um painel de imagem e um botão de saída. */
+
 package guiApp;
 
 import java.awt.*;
@@ -10,12 +12,10 @@ import javax.swing.border.TitledBorder;
 
 class MessageScreen extends JDialog implements ActionListener {
     private static final long    serialVersionUID = 1L;
-    private final JButton exitButton;
-    private final JPanel textPannel;
-    private final JPanel buttonPannel;
-    private final ImageDisplayPanel imagePannel;
+    private final JPanel textPanel;
+    private final JPanel buttonPanel;
+    private final ImageDisplayPanel imagePanel;
     private final JTextArea textArea;
-    private final JScrollPane scrollPane;
 
 
     MessageScreen(JFrame mainWindow, String title, String text) throws HeadlessException {
@@ -24,38 +24,67 @@ class MessageScreen extends JDialog implements ActionListener {
         setResizable(false);
         setLocationRelativeTo(mainWindow);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
+        setModalityType(ModalityType.APPLICATION_MODAL);
 
-        textArea = new JTextArea();
-        textArea.setText(text);
+        textArea = createTextArea(text);
         formatTextArea();
 
-        scrollPane = new JScrollPane(textArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        JScrollPane scrollPane = createScrollPane(textArea);
+        textPanel = createTextPanel(scrollPane);
 
-        textPannel = new JPanel();
-        textPannel.setBackground(Color.white);
-        textPannel.setBorder(new TitledBorder(new LineBorder(Color.gray), SystemInfo.name));
-        textPannel.setLayout(new BorderLayout());
-        textPannel.add(scrollPane, BorderLayout.CENTER);
-        add(textPannel, BorderLayout.CENTER);
+        imagePanel = createImagePanel();
 
-        imagePannel = new ImageDisplayPanel();
-        imagePannel.setPreferredSize(new Dimension(200, 200));
-        imagePannel.setBorder(new TitledBorder(new LineBorder(Color.gray), SystemInfo.faculty));
-        imagePannel.setBackground(Color.white);
-        add(imagePannel, BorderLayout.WEST);
+        JButton exitButton = new JButton();
+        buttonPanel = createButtonPanel(exitButton);
 
-        buttonPannel = new JPanel();
-        exitButton = new JButton("Fechar");
-        exitButton.addActionListener(this);
-        buttonPannel.add(exitButton);
-        add(buttonPannel, BorderLayout.SOUTH);
+        addComponents();
     }
 
     @Override
     public void actionPerformed(ActionEvent arg0)
     {
         this.setVisible(false);
+    }
+
+    private JTextArea createTextArea(String text) {
+        JTextArea textArea = new JTextArea();
+        textArea.setText(text);
+        return textArea;
+    }
+
+    private JScrollPane createScrollPane(JTextArea textArea) {
+        return new JScrollPane(textArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+    }
+
+    private JPanel createTextPanel(JScrollPane scrollPane) {
+        JPanel panel = new JPanel();
+        panel.setBackground(Color.white);
+        panel.setBorder(new TitledBorder(new LineBorder(Color.gray), SystemInfo.name));
+        panel.setLayout(new BorderLayout());
+        panel.add(scrollPane, BorderLayout.CENTER);
+        return panel;
+    }
+
+    private ImageDisplayPanel createImagePanel() {
+        ImageDisplayPanel panel = new ImageDisplayPanel();
+        panel.setPreferredSize(new Dimension(200, 200));
+        panel.setBorder(new TitledBorder(new LineBorder(Color.gray), SystemInfo.faculty));
+        panel.setBackground(Color.white);
+        return panel;
+    }
+
+    private JPanel createButtonPanel(JButton exitButton) {
+        JPanel buttonPanel = new JPanel();
+        exitButton = new JButton("Fechar");
+        exitButton.addActionListener(this);
+        buttonPanel.add(exitButton);
+        return buttonPanel;
+    }
+
+    private void addComponents() {
+        add(textPanel, BorderLayout.CENTER);
+        add(imagePanel, BorderLayout.WEST);
+        add(buttonPanel, BorderLayout.SOUTH);
     }
 
     private void formatTextArea() {
