@@ -7,10 +7,10 @@ import java.awt.event.MouseListener;
 class MouseListenerClass implements MouseListener {
     private BackgroundPanel referencia;
 
-    MouseListenerClass(BackgroundPanel referencia) {
-        super();
-        this.referencia = referencia;
-    }
+//    MouseListenerClass(BackgroundPanel referencia) {
+//        super();
+//        this.referencia = referencia;
+//    }
 
     @Override
     public void mouseClicked(MouseEvent mouseEvent) {

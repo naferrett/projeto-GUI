@@ -119,16 +119,16 @@ class BackgroundPanel extends JPanel {
         int marginX = (int)(0.025 * maxX);
         int marginY = (int)(0.05 * maxY);
 
-        attractors[0] = new Point(maxX / 2, marginY);                        // Topo
-        attractors[1] = new Point((int)(0.6 * maxX), (int)(0.3 * maxY));     // Parte inferior direita
-        attractors[2] = new Point(maxX - marginX, (int)(0.3 * maxY));        // Extremo direito
-        attractors[3] = new Point((int)(0.7 * maxX), (int)(0.6 * maxY));     // Extremo direito inferior
-        attractors[4] = new Point((int)(0.8 * maxX), maxY - marginY);        // Ponta inferior direita
-        attractors[5] = new Point(maxX / 2, (int)(0.75 * maxY));             // Ponta inferior
-        attractors[6] = new Point((int)(0.2 * maxX), maxY - marginY);        // Ponta inferior esquerda
-        attractors[7] = new Point((int)(0.3 * maxX), (int)(0.6 * maxY));     // Extremo esquerdo inferior
-        attractors[8] = new Point(marginX, (int)(0.3 * maxY));               // Extremo esquerdo superior
-        attractors[9] = new Point((int)(0.4 * maxX), (int)(0.3 * maxY));     // Parte superior esquerda
+        attractors[0] = new Point(maxX / 2, marginY);
+        attractors[1] = new Point((int)(0.6 * maxX), (int)(0.3 * maxY));
+        attractors[2] = new Point(maxX - marginX, (int)(0.3 * maxY));
+        attractors[3] = new Point((int)(0.7 * maxX), (int)(0.6 * maxY));
+        attractors[4] = new Point((int)(0.8 * maxX), maxY - marginY);
+        attractors[5] = new Point(maxX / 2, (int)(0.75 * maxY));
+        attractors[6] = new Point((int)(0.2 * maxX), maxY - marginY);
+        attractors[7] = new Point((int)(0.3 * maxX), (int)(0.6 * maxY));
+        attractors[8] = new Point(marginX, (int)(0.3 * maxY));
+        attractors[9] = new Point((int)(0.4 * maxX), (int)(0.3 * maxY));
 
         currentLine = 0;
         repaint();

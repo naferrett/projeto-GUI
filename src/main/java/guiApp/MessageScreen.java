@@ -30,25 +30,21 @@ class MessageScreen extends JDialog implements ActionListener {
         textArea.setText(text);
         formatTextArea();
 
-        // Criar o JScrollPane e adicionar o JTextArea
         scrollPane = new JScrollPane(textArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
-        // Criar o painel de texto e adicionar o JScrollPane
         textPannel = new JPanel();
         textPannel.setBackground(Color.white);
         textPannel.setBorder(new TitledBorder(new LineBorder(Color.gray), SystemInfo.name));
         textPannel.setLayout(new BorderLayout());
-        textPannel.add(scrollPane, BorderLayout.CENTER); // Adicionar o scrollPane ao painel de texto
+        textPannel.add(scrollPane, BorderLayout.CENTER);
         add(textPannel, BorderLayout.CENTER);
 
-        // Configurar o painel de imagem
         imagePannel = new ImageDisplayPanel();
         imagePannel.setPreferredSize(new Dimension(200, 200));
         imagePannel.setBorder(new TitledBorder(new LineBorder(Color.gray), SystemInfo.faculty));
         imagePannel.setBackground(Color.white);
         add(imagePannel, BorderLayout.WEST);
 
-        // Configurar o painel de botões
         buttonPannel = new JPanel();
         exitButton = new JButton("Fechar");
         exitButton.addActionListener(this);

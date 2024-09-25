@@ -7,11 +7,11 @@ import javax.swing.JOptionPane;
 
 class WindowListenerClass implements WindowListener
 {
-    private MainWindow referencia;
+    private MainWindow reference;
 
-    WindowListenerClass(MainWindow referencia)
+    WindowListenerClass(MainWindow reference)
     {
-        this.referencia = referencia;
+        this.reference = reference;
     }
 
     @Override
@@ -27,8 +27,8 @@ class WindowListenerClass implements WindowListener
     @Override
     public void windowClosing(WindowEvent arg0)
     {
-        JOptionPane.showMessageDialog(this.referencia, "Programa terminando...", SystemInfo.getVersionName(), JOptionPane.INFORMATION_MESSAGE);
-        this.referencia.exitInterface();
+        JOptionPane.showMessageDialog(this.reference, "Programa fechando...", SystemInfo.getVersionName(), JOptionPane.INFORMATION_MESSAGE);
+        this.reference.exitInterface();
     }
 
     @Override

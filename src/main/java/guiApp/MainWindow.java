@@ -42,7 +42,7 @@ class MainWindow extends JFrame implements ActionListener, Runnable {
     private JMenuItem menuItemAbout;
     private JScrollPane scrollPane;
     private WindowListenerClass windowEventListener;
-    private MouseListenerClass mouseEventListener;
+    //private MouseListenerClass mouseEventListener;
     private BackgroundPanel backgroundPanel;
     private JPanel statusPanel;
 
@@ -69,8 +69,10 @@ class MainWindow extends JFrame implements ActionListener, Runnable {
     private void setIcon() {
         try {
             this.setIconImage(ImageIO.read(this.getClass().getResource(SystemInfo.iconImage)));
-        } catch (IOException exceptionLaunched) {
+        } catch (IOException ex) {
             JOptionPane.showMessageDialog(this, "Erro ao carregar o ícone.", "Erro", JOptionPane.ERROR_MESSAGE);
+        } catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(this, "Erro ao carregar o ícone: atributo nulo.", "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -138,8 +140,8 @@ class MainWindow extends JFrame implements ActionListener, Runnable {
         windowEventListener = new WindowListenerClass(this);
         this.addWindowListener(windowEventListener);
 
-        mouseEventListener = new MouseListenerClass(this.backgroundPanel);
-        backgroundPanel.addMouseListener(mouseEventListener);
+//        mouseEventListener = new MouseListenerClass(this.backgroundPanel);
+//        backgroundPanel.addMouseListener(mouseEventListener);
     }
 
     void setStatusMessage(String message)
@@ -259,7 +261,6 @@ class MainWindow extends JFrame implements ActionListener, Runnable {
         configMenu.add(menuItemChooseSpeed);
     }
 
-
     private void createHelpMenu() {
         helpMenu = new JMenu("Ajuda");
         helpMenu.setMnemonic('J');
@@ -326,7 +327,7 @@ class MainWindow extends JFrame implements ActionListener, Runnable {
             this.setStatusMessage("Opção 'Fechar Arquivo' selecionada!");
 
             try {
-                fileText.setText("");
+                fileHandler.closeFile();
                 this.setStatusMessage("Arquivo fechado: " + currentFile.getName());
                 currentFile = null;
             } catch (NullPointerException ex) {
@@ -403,7 +404,6 @@ class MainWindow extends JFrame implements ActionListener, Runnable {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
             backgroundPanel.nextLine();
         }
     }
