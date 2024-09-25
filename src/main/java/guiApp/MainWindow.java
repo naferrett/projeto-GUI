@@ -1,10 +1,6 @@
 package guiApp;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.HeadlessException;
-import java.awt.Toolkit;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -62,7 +58,7 @@ class MainWindow extends JFrame implements ActionListener, Runnable {
         this.setSize((int) (Toolkit.getDefaultToolkit().getScreenSize().getWidth() * 0.3), (int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.3));
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setLayout(new BorderLayout(5, 5)); // ir trocando pra ver oq muda
+        //this.setLayout(new BorderLayout(5, 5)); // ir trocando pra ver oq muda
 
         this.setIcon();
     }
@@ -81,10 +77,15 @@ class MainWindow extends JFrame implements ActionListener, Runnable {
         initTextArea();
         initScrollPane();
         initListeners();
+
+        setVisible(true);
     }
 
     private void initBackgroundPanel() {
         this.backgroundPanel = new BackgroundPanel();
+        JLabel label = new JLabel("Arquivo carregado:");
+        label.setLabelFor(fileText);
+        this.backgroundPanel.add(label, BorderLayout.NORTH);
     }
 
     private void initStatusPanel() {
@@ -97,17 +98,21 @@ class MainWindow extends JFrame implements ActionListener, Runnable {
     }
 
     private void initScrollPane() {
-        this.backgroundPanel = new BackgroundPanel();
         this.scrollPane = new JScrollPane(backgroundPanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         this.add(scrollPane, BorderLayout.CENTER);
     }
 
     private void initTextArea() {
+
         fileText = new JTextArea();
         fileText.setEditable(false);
+        fileText.setLineWrap(true);
+        fileText.setWrapStyleWord(true);
+        fileText.setColumns(35);
         fileHandler = new FileHandler(fileText);
         this.scrollPane = new JScrollPane(fileText);
-        this.add(new JScrollPane(fileText), BorderLayout.CENTER);
+
+        this.backgroundPanel.add(new JScrollPane(fileText), BorderLayout.CENTER);
     }
 
     private void initListeners() {
@@ -265,6 +270,7 @@ class MainWindow extends JFrame implements ActionListener, Runnable {
     @Override
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == menuItemOpenFile) {
+            //System.out.println("'Open File' menu item clicked.");
             this.setStatusMessage("Opção 'Abrir Arquivo' selecionada!");
 
             fileChooser = new JFileChooser();
@@ -276,10 +282,11 @@ class MainWindow extends JFrame implements ActionListener, Runnable {
 
             int returnValue = fileChooser.showOpenDialog(this);
 
-            if(returnValue == JFileChooser.APPROVE_OPTION) {
+            if (returnValue == JFileChooser.APPROVE_OPTION) {
                 currentFile = fileChooser.getSelectedFile();
+                //System.out.println("Selected file: " + currentFile.getName());
                 try {
-                    fileHandler.openFile(currentFile);
+                    fileHandler.openFile(currentFile);  // Exibe o conteúdo no JTextArea
                     this.setStatusMessage("Arquivo aberto: " + currentFile.getName());
                 } catch (IOException ex) {
                     JOptionPane.showMessageDialog(this, "Erro ao abrir o arquivo.", "Erro", JOptionPane.ERROR_MESSAGE);
@@ -291,7 +298,7 @@ class MainWindow extends JFrame implements ActionListener, Runnable {
             this.setStatusMessage("Opção 'Fechar Arquivo' selecionada!");
 
             try {
-                fileText.setText(""); // Limpa o conteúdo do JTextArea
+                fileText.setText("");
                 this.setStatusMessage("Arquivo fechado: " + currentFile.getName());
                 currentFile = null;
             } catch (NullPointerException ex) {
@@ -304,29 +311,28 @@ class MainWindow extends JFrame implements ActionListener, Runnable {
         }
 
         if (event.getSource() == menuItemHelp) {
-            (new MessageScreen(this, "Ajuda - " + SystemInfo.getVersionName(), SystemInfo.getHelp())).setVisible(true);
             this.setStatusMessage("Opção 'Ajuda' selecionada!");
+            (new MessageScreen(this, "Ajuda - " + SystemInfo.getVersionName(), SystemInfo.getHelp())).setVisible(true);
         }
 
         if (event.getSource() == menuItemAbout) {
-            (new MessageScreen(this, "Sobre - " + SystemInfo.getVersionName(), SystemInfo.getAbout())).setVisible(true);
             this.setStatusMessage("Opção 'Sobre' selecionada!");
+            (new MessageScreen(this, "Sobre - " + SystemInfo.getVersionName(), SystemInfo.getAbout())).setVisible(true);
         }
 
         if (event.getSource() == menuItemRed) {
-            System.out.println("Evento capturado: Vermelho");
-            backgroundPanel.setBackgroundColor(new Color(255,99,71));
             this.setStatusMessage("Cor de fundo alterada para 'Vermelho'!");
+            backgroundPanel.setBackgroundColor(new Color(255,99,71));
         }
 
         if (event.getSource() == menuItemPink) {
-            backgroundPanel.setBackgroundColor(new Color(255,192,203));
             this.setStatusMessage("Cor de fundo alterada para 'Rosa'!");
+            backgroundPanel.setBackgroundColor(new Color(255,192,203));
         }
 
         if (event.getSource() == menuItemBlue) {
-            backgroundPanel.setBackgroundColor(new Color(135,206,250));
             this.setStatusMessage("Cor de fundo alterada para 'Azul'!");
+            backgroundPanel.setBackgroundColor(new Color(135,206,250));
         }
     }
 
