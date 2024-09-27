@@ -11,32 +11,14 @@ import javax.swing.*;
 
 @Log4j2
 class MainWindow extends JFrame implements Runnable {
+
     @Serial
     private static final long serialVersionUID = 1L;
     private boolean threadRunning;
     private JLabel labelStatus;
-    private JMenu fileMenu;
-    private JMenu configMenu;
-    private JMenu helpMenu;
-    private JMenuItem menuItemOpenFile;
-    private JMenuItem menuItemCloseFile;
-    private JMenuItem menuItemExit;
+    private MenuHandler menuHandler;
     private JTextArea fileText;
     private FileHandler fileHandler;
-    private JMenuItem menuItemRectanglePattern;
-    private JMenuItem menuItemTrianglePattern;
-    private JMenuItem menuItemStarPattern;
-    private JMenuItem menuItemNoPattern;
-    private JMenuItem menuItemBlue;
-    private JMenuItem menuItemPink;
-    private JMenuItem menuItemRed;
-    private JMenuItem menuItemGray;
-    private JMenu menuItemChooseSpeed;
-    private JMenuItem menuItemSpeed05x;
-    private JMenuItem menuItemSpeed1x;
-    private JMenuItem menuItemSpeed2x;
-    private JMenuItem menuItemHelp;
-    private JMenuItem menuItemAbout;
     private JScrollPane scrollPane;
     private final EventListener eventListener;
     //private MouseListenerClass mouseEventListener;
@@ -49,11 +31,15 @@ class MainWindow extends JFrame implements Runnable {
 
         windowConfig();
         initAddComponents();
-        createAddToMenu();
+
 
         this.fileHandler = new FileHandler(fileText);
         this.eventListener = new EventListener(fileHandler, this);
-        addMenuListeners(eventListener);
+
+        menuHandler = new MenuHandler(this);
+        menuHandler.createAddToMenu();
+
+        this.addMenuListeners(eventListener);
     }
 
     private void windowConfig() {
@@ -81,6 +67,7 @@ class MainWindow extends JFrame implements Runnable {
 
         setVisible(true);
     }
+
     private void initBackgroundPanel() {
         this.backgroundPanel = new BackgroundPanel();
         this.backgroundPanel.setLayout(new GridBagLayout());
@@ -154,147 +141,8 @@ class MainWindow extends JFrame implements Runnable {
         serverDispatcher.start();
     }
 
-    private void createAddToMenu() {
-        createFileMenu();
-        createConfigMenu();
-        createHelpMenu();
-        setupMenuBar();
-    }
-
-    private void createFileMenu() {
-        fileMenu = new JMenu("Arquivo");
-        fileMenu.setMnemonic('A');
-
-        menuItemOpenFile = new JMenuItem("Abrir Arquivo");
-        menuItemOpenFile.setActionCommand("Open File");
-        menuItemOpenFile.setMnemonic('B');
-        fileMenu.add(menuItemOpenFile);
-
-        menuItemCloseFile = new JMenuItem("Fechar Arquivo");
-        menuItemCloseFile.setActionCommand("Close File");
-        menuItemCloseFile.setMnemonic('F');
-        fileMenu.add(menuItemCloseFile);
-
-        fileMenu.addSeparator();
-
-        menuItemExit = new JMenuItem("Saida");
-        menuItemExit.setActionCommand("Exit");
-        menuItemExit.setMnemonic('S');
-        fileMenu.add(menuItemExit);
-    }
-
-    private void createConfigMenu() {
-        configMenu = new JMenu("Configuração");
-        configMenu.setMnemonic('C');
-
-        addPatternMenu();
-        addColorMenu();
-        addSpeedMenu();
-    }
-
-    private void addPatternMenu() {
-        // Criando submenu para escolher o padrão
-        JMenu menuItemChoosePattern = new JMenu("Alterar Padrão");
-        menuItemChoosePattern.setMnemonic('P');
-
-        // Itens do submenu
-        menuItemRectanglePattern = new JMenuItem("Retângulo");
-        menuItemRectanglePattern.addActionListener(eventListener);
-        menuItemRectanglePattern.setActionCommand("Rectangle Pattern");
-        menuItemChoosePattern.add(menuItemRectanglePattern);
-
-        menuItemTrianglePattern = new JMenuItem("Triângulo");
-        menuItemTrianglePattern.addActionListener(eventListener);
-        menuItemTrianglePattern.setActionCommand("Triangle Pattern");
-        menuItemChoosePattern.add(menuItemTrianglePattern);
-
-        menuItemStarPattern = new JMenuItem("Estrela");
-        menuItemStarPattern.addActionListener(eventListener);
-        menuItemStarPattern.setActionCommand("Star Pattern");
-        menuItemChoosePattern.add(menuItemStarPattern);
-
-        menuItemNoPattern = new JMenuItem("Limpar");
-        menuItemNoPattern.addActionListener(eventListener);
-        menuItemNoPattern.setActionCommand("No Pattern");
-        menuItemChoosePattern.add(menuItemNoPattern);
-
-        configMenu.add(menuItemChoosePattern);
-    }
-
-    private void addColorMenu() {
-        // Criando submenu para escolher a cor
-        JMenu menuItemChooseColor = new JMenu("Alterar Cor");
-        menuItemChooseColor.setMnemonic('R');
-
-        // Itens do submenu
-        menuItemPink = new JMenuItem("Rosa");
-        menuItemPink.setActionCommand("Pink Background");
-        menuItemChooseColor.add(menuItemPink);
-
-        menuItemRed = new JMenuItem("Vermelho");
-        menuItemRed.setActionCommand("Red Background");
-        menuItemChooseColor.add(menuItemRed);
-
-        menuItemBlue = new JMenuItem("Azul");
-        menuItemBlue.setActionCommand("Blue Background");
-        menuItemChooseColor.add(menuItemBlue);
-
-        menuItemGray = new JMenuItem("Cinza");
-        menuItemGray.setActionCommand("Gray Background");
-        menuItemChooseColor.add(menuItemGray);
-
-        configMenu.add(menuItemChooseColor);
-    }
-
-    private void addSpeedMenu() {
-        // Criando submenu para escolher a velocidade
-        menuItemChooseSpeed = new JMenu("Alterar Velocidade");
-        menuItemChooseSpeed.setMnemonic('D');
-
-        // Itens do submenu
-        menuItemSpeed05x = new JMenuItem("Velocidade 0.5x");
-        menuItemSpeed05x.addActionListener(eventListener);
-        menuItemSpeed05x.setActionCommand("Speed 0.5x");
-        menuItemChooseSpeed.add(menuItemSpeed05x);
-
-        menuItemSpeed1x = new JMenuItem("Velocidade 1x");
-        menuItemSpeed1x.addActionListener(eventListener);
-        menuItemSpeed1x.setActionCommand("Speed 1x");
-        menuItemChooseSpeed.add(menuItemSpeed1x);
-
-        menuItemSpeed2x = new JMenuItem("Velocidade 2x");
-        menuItemSpeed2x.addActionListener(eventListener);
-        menuItemSpeed2x.setActionCommand("Speed 2x");
-        menuItemChooseSpeed.add(menuItemSpeed2x);
-
-        configMenu.add(menuItemChooseSpeed);
-    }
-
-    private void createHelpMenu() {
-        helpMenu = new JMenu("Ajuda");
-        helpMenu.setMnemonic('J');
-
-        menuItemHelp = new JMenuItem("Ajuda");
-        menuItemHelp.setMnemonic('U');
-        menuItemHelp.setActionCommand("Help Message");
-        helpMenu.add(menuItemHelp);
-
-        menuItemAbout = new JMenuItem("Sobre");
-        menuItemAbout.setMnemonic('O');
-        menuItemAbout.setActionCommand("About Message");
-        helpMenu.add(menuItemAbout);
-    }
-
-    private void setupMenuBar() {
-        JMenuBar menuBar = new JMenuBar();
-        menuBar.add(fileMenu);
-        menuBar.add(configMenu);
-        menuBar.add(helpMenu);
-        this.setJMenuBar(menuBar);
-    }
-
-    private void addMenuItemListener(ActionListener listener, JMenu mainMenu) {
-        for (Component target : mainMenu.getMenuComponents()) {
+    void addMenuItemListener(ActionListener listener, JMenu mainMenu) {
+        for(Component target : mainMenu.getMenuComponents()) {
             if (target instanceof JMenuItem) {
                 ((JMenuItem) target).addActionListener(listener);
             }
