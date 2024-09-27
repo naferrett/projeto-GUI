@@ -8,11 +8,13 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
+import java.io.Serial;
 import java.util.Random;
 
 import javax.swing.JPanel;
 
 class BackgroundPanel extends JPanel {
+    @Serial
     private static final long serialVersionUID = 1L;
     private Color foregroundColor;
     private Color backgroundColor;

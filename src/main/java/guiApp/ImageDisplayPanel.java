@@ -6,11 +6,13 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.io.IOException;
+import java.io.Serial;
 import java.net.URL;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 class ImageDisplayPanel extends JPanel {
+    @Serial
     private static final long serialVersionUID = 1L;
     private Image currentImage;
     private Graphics2D auxGraphics;
