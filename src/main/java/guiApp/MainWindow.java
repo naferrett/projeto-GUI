@@ -1,50 +1,43 @@
 package guiApp;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.io.IOException;
-
+import java.io.Serial;
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.filechooser.FileNameExtensionFilter;
 
-class MainWindow extends JFrame implements ActionListener, Runnable {
+class MainWindow extends JFrame implements Runnable {
+    @Serial
     private static final long serialVersionUID = 1L;
     private boolean threadRunning;
     private JLabel labelStatus;
     private JMenu fileMenu;
     private JMenu configMenu;
     private JMenu helpMenu;
-    private JMenuBar menuBar;
     private JMenuItem menuItemOpenFile;
     private JMenuItem menuItemCloseFile;
     private JMenuItem menuItemExit;
-    private JFileChooser fileChooser;
     private JTextArea fileText;
     private FileHandler fileHandler;
-    private File currentFile;
-    private JMenu menuItemChoosePattern;
     private JMenuItem menuItemRectanglePattern;
     private JMenuItem menuItemTrianglePattern;
     private JMenuItem menuItemStarPattern;
     private JMenuItem menuItemNoPattern;
-    private JMenu menuItemChooseColor;
     private JMenuItem menuItemBlue;
     private JMenuItem menuItemPink;
     private JMenuItem menuItemRed;
     private JMenuItem menuItemGray;
     private JMenu menuItemChooseSpeed;
+    private JMenuItem menuItemSpeed05x;
     private JMenuItem menuItemSpeed1x;
     private JMenuItem menuItemSpeed2x;
     private JMenuItem menuItemHelp;
     private JMenuItem menuItemAbout;
     private JScrollPane scrollPane;
-    private WindowListenerClass windowEventListener;
+    private final EventHandler eventHandler;
     //private MouseListenerClass mouseEventListener;
-    private BackgroundPanel backgroundPanel;
-    private JPanel statusPanel;
+    BackgroundPanel backgroundPanel;
 
     MainWindow() throws HeadlessException {
         super(SystemInfo.getVersionName());
@@ -54,14 +47,16 @@ class MainWindow extends JFrame implements ActionListener, Runnable {
         windowConfig();
         initAddComponents();
         createAddToMenu();
-        addMenuListeners(this);
+
+        this.fileHandler = new FileHandler(fileText);
+        this.eventHandler = new EventHandler(fileHandler, this);
+        addMenuListeners(eventHandler);
     }
 
     private void windowConfig() {
         this.setSize((int) (Toolkit.getDefaultToolkit().getScreenSize().getWidth() * 0.3), (int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.3));
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //this.setLayout(new BorderLayout(5, 5)); // ir trocando pra ver oq muda
 
         this.setIcon();
     }
@@ -69,10 +64,8 @@ class MainWindow extends JFrame implements ActionListener, Runnable {
     private void setIcon() {
         try {
             this.setIconImage(ImageIO.read(this.getClass().getResource(SystemInfo.iconImage)));
-        } catch (IOException ex) {
+        } catch (IOException | NullPointerException ex) {
             JOptionPane.showMessageDialog(this, "Erro ao carregar o ícone.", "Erro", JOptionPane.ERROR_MESSAGE);
-        } catch (NullPointerException ex) {
-            JOptionPane.showMessageDialog(this, "Erro ao carregar o ícone: atributo nulo.", "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -95,7 +88,7 @@ class MainWindow extends JFrame implements ActionListener, Runnable {
         label.setLabelFor(fileText);
 
         gbc.fill = GridBagConstraints.CENTER;
-        gbc.gridx = 0; // 'gridx' e 'gridy' posicionam o elemento em relação aos eixos posicionados ao centro?
+        gbc.gridx = 0; // 'gridx' e 'gridy' posicionam o elemento em relação aos eixos posicionados ao centro
         gbc.gridy = 0;
         gbc.insets = new Insets(20, 10, 20, 10); // Padding interno do elemento em relação ao panel
         //gbc.weightx = 1.0;
@@ -103,11 +96,11 @@ class MainWindow extends JFrame implements ActionListener, Runnable {
     }
 
     private void initStatusPanel() {
-        this.statusPanel = new JPanel();
+        JPanel statusPanel = new JPanel();
         this.labelStatus = new JLabel();
-        this.statusPanel.add(labelStatus);
-        this.statusPanel.setBackground(Color.gray);
-        this.statusPanel.setBorder(BorderFactory.createEtchedBorder());
+        statusPanel.add(labelStatus);
+        statusPanel.setBackground(Color.gray);
+        statusPanel.setBorder(BorderFactory.createEtchedBorder());
         this.add(statusPanel, BorderLayout.SOUTH);
     }
 
@@ -129,7 +122,7 @@ class MainWindow extends JFrame implements ActionListener, Runnable {
         gbc.weightx = 1.0; // Aumenta a caixa de texto na horizontal
         gbc.weighty = 1.0; // Aumenta a caixa de texto na vertical
         // gbc.gridx = 0; // Column 0
-        gbc.gridy = 1; // Row 1
+        gbc.gridy = 1; // Linha 1
         gbc.fill = GridBagConstraints.BOTH; //Aumenta a caixa em tamanho e largura
         gbc.insets = new Insets(0, 70, 50, 70);
 
@@ -137,7 +130,7 @@ class MainWindow extends JFrame implements ActionListener, Runnable {
     }
 
     private void initListeners() {
-        windowEventListener = new WindowListenerClass(this);
+        WindowListenerClass windowEventListener = new WindowListenerClass(this);
         this.addWindowListener(windowEventListener);
 
 //        mouseEventListener = new MouseListenerClass(this.backgroundPanel);
@@ -158,7 +151,6 @@ class MainWindow extends JFrame implements ActionListener, Runnable {
         serverDispatcher.start();
     }
 
-    // Fazer uma classe?
     private void createAddToMenu() {
         createFileMenu();
         createConfigMenu();
@@ -171,16 +163,19 @@ class MainWindow extends JFrame implements ActionListener, Runnable {
         fileMenu.setMnemonic('A');
 
         menuItemOpenFile = new JMenuItem("Abrir Arquivo");
+        menuItemOpenFile.setActionCommand("Open File");
         menuItemOpenFile.setMnemonic('B');
         fileMenu.add(menuItemOpenFile);
 
         menuItemCloseFile = new JMenuItem("Fechar Arquivo");
+        menuItemCloseFile.setActionCommand("Close File");
         menuItemCloseFile.setMnemonic('F');
         fileMenu.add(menuItemCloseFile);
 
         fileMenu.addSeparator();
 
         menuItemExit = new JMenuItem("Saida");
+        menuItemExit.setActionCommand("Exit");
         menuItemExit.setMnemonic('S');
         fileMenu.add(menuItemExit);
     }
@@ -196,24 +191,28 @@ class MainWindow extends JFrame implements ActionListener, Runnable {
 
     private void addPatternMenu() {
         // Criando submenu para escolher o padrão
-        menuItemChoosePattern = new JMenu("Alterar Padrão");
+        JMenu menuItemChoosePattern = new JMenu("Alterar Padrão");
         menuItemChoosePattern.setMnemonic('P');
 
         // Itens do submenu
         menuItemRectanglePattern = new JMenuItem("Retângulo");
-        menuItemRectanglePattern.addActionListener(this);
+        menuItemRectanglePattern.addActionListener(eventHandler);
+        menuItemRectanglePattern.setActionCommand("Rectangle Pattern");
         menuItemChoosePattern.add(menuItemRectanglePattern);
 
         menuItemTrianglePattern = new JMenuItem("Triângulo");
-        menuItemTrianglePattern.addActionListener(this);
+        menuItemTrianglePattern.addActionListener(eventHandler);
+        menuItemTrianglePattern.setActionCommand("Triangle Pattern");
         menuItemChoosePattern.add(menuItemTrianglePattern);
 
         menuItemStarPattern = new JMenuItem("Estrela");
-        menuItemStarPattern.addActionListener(this);
+        menuItemStarPattern.addActionListener(eventHandler);
+        menuItemStarPattern.setActionCommand("Star Pattern");
         menuItemChoosePattern.add(menuItemStarPattern);
 
         menuItemNoPattern = new JMenuItem("Limpar");
-        menuItemNoPattern.addActionListener(this);
+        menuItemNoPattern.addActionListener(eventHandler);
+        menuItemNoPattern.setActionCommand("No Pattern");
         menuItemChoosePattern.add(menuItemNoPattern);
 
         configMenu.add(menuItemChoosePattern);
@@ -221,24 +220,24 @@ class MainWindow extends JFrame implements ActionListener, Runnable {
 
     private void addColorMenu() {
         // Criando submenu para escolher a cor
-        menuItemChooseColor = new JMenu("Alterar Cor");
+        JMenu menuItemChooseColor = new JMenu("Alterar Cor");
         menuItemChooseColor.setMnemonic('R');
 
         // Itens do submenu
         menuItemPink = new JMenuItem("Rosa");
-        menuItemPink.addActionListener(this);
+        menuItemPink.setActionCommand("Pink Background");
         menuItemChooseColor.add(menuItemPink);
 
         menuItemRed = new JMenuItem("Vermelho");
-        menuItemRed.addActionListener(this);
+        menuItemRed.setActionCommand("Red Background");
         menuItemChooseColor.add(menuItemRed);
 
         menuItemBlue = new JMenuItem("Azul");
-        menuItemBlue.addActionListener(this);
+        menuItemBlue.setActionCommand("Blue Background");
         menuItemChooseColor.add(menuItemBlue);
 
         menuItemGray = new JMenuItem("Cinza");
-        menuItemGray.addActionListener(this);
+        menuItemGray.setActionCommand("Gray Background");
         menuItemChooseColor.add(menuItemGray);
 
         configMenu.add(menuItemChooseColor);
@@ -250,12 +249,19 @@ class MainWindow extends JFrame implements ActionListener, Runnable {
         menuItemChooseSpeed.setMnemonic('D');
 
         // Itens do submenu
+        menuItemSpeed05x = new JMenuItem("Velocidade 0.5x");
+        menuItemSpeed05x.addActionListener(eventHandler);
+        menuItemSpeed05x.setActionCommand("Speed 0.5x");
+        menuItemChooseSpeed.add(menuItemSpeed05x);
+
         menuItemSpeed1x = new JMenuItem("Velocidade 1x");
-        menuItemSpeed1x.addActionListener(this);
+        menuItemSpeed1x.addActionListener(eventHandler);
+        menuItemSpeed1x.setActionCommand("Speed 1x");
         menuItemChooseSpeed.add(menuItemSpeed1x);
 
         menuItemSpeed2x = new JMenuItem("Velocidade 2x");
-        menuItemSpeed2x.addActionListener(this);
+        menuItemSpeed2x.addActionListener(eventHandler);
+        menuItemSpeed2x.setActionCommand("Speed 2x");
         menuItemChooseSpeed.add(menuItemSpeed2x);
 
         configMenu.add(menuItemChooseSpeed);
@@ -267,19 +273,33 @@ class MainWindow extends JFrame implements ActionListener, Runnable {
 
         menuItemHelp = new JMenuItem("Ajuda");
         menuItemHelp.setMnemonic('U');
+        menuItemHelp.setActionCommand("Help Message");
         helpMenu.add(menuItemHelp);
 
         menuItemAbout = new JMenuItem("Sobre");
         menuItemAbout.setMnemonic('O');
+        menuItemAbout.setActionCommand("About Message");
         helpMenu.add(menuItemAbout);
     }
 
     private void setupMenuBar() {
-        menuBar = new JMenuBar();
+        JMenuBar menuBar = new JMenuBar();
         menuBar.add(fileMenu);
         menuBar.add(configMenu);
         menuBar.add(helpMenu);
         this.setJMenuBar(menuBar);
+    }
+
+    private void addMenuItemListener(ActionListener listener, JMenu mainMenu) {
+        for (Component target : mainMenu.getMenuComponents()) {
+            if (target instanceof JMenuItem) {
+                ((JMenuItem) target).addActionListener(listener);
+            }
+
+            if (target instanceof JMenu) {
+                addMenuItemListener(listener, (JMenu) target);
+            }
+        }
     }
 
     void addMenuListeners(ActionListener listener) {
@@ -287,106 +307,6 @@ class MainWindow extends JFrame implements ActionListener, Runnable {
             if (menu instanceof JMenu) {
                 addMenuItemListener(listener, (JMenu) menu);
             }
-        }
-    }
-
-    private void addMenuItemListener(ActionListener listener, JMenu menuPrincipal) {
-        for (Component target : menuPrincipal.getMenuComponents()) {
-            if (target instanceof JMenuItem) {
-                ((JMenuItem) target).addActionListener(listener);
-            }
-        }
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent event) {
-        if (event.getSource() == menuItemOpenFile) {
-            this.setStatusMessage("Opção 'Abrir Arquivo' selecionada!");
-
-            fileChooser = new JFileChooser();
-            fileChooser.setDialogTitle("Procurar Arquivo");
-            fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-
-            FileNameExtensionFilter filter = new FileNameExtensionFilter("Arquivo de texto", "txt", "pdf");
-            fileChooser.setFileFilter(filter);
-
-            int returnValue = fileChooser.showOpenDialog(this);
-
-            if (returnValue == JFileChooser.APPROVE_OPTION) {
-                currentFile = fileChooser.getSelectedFile();
-                try {
-                    fileHandler.openFile(currentFile);  // Exibe o conteúdo no JTextArea
-                    this.setStatusMessage("Arquivo aberto: " + currentFile.getName());
-                } catch (IOException ex) {
-                    JOptionPane.showMessageDialog(this, "Erro ao abrir o arquivo.", "Erro", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        }
-
-        if (event.getSource() == menuItemCloseFile) {
-            this.setStatusMessage("Opção 'Fechar Arquivo' selecionada!");
-
-            try {
-                fileHandler.closeFile();
-                this.setStatusMessage("Arquivo fechado: " + currentFile.getName());
-                currentFile = null;
-            } catch (NullPointerException ex) {
-                JOptionPane.showMessageDialog(this, "Nenhum arquivo aberto foi encontrado.", "Erro", JOptionPane.ERROR_MESSAGE);
-            }
-        }
-
-        if (event.getSource() == menuItemExit) {
-            exitInterface();
-        }
-
-        if (event.getSource() == menuItemRectanglePattern) {
-            this.setStatusMessage("Padrão dinâmico alterado para 'Retângulo'!");
-            backgroundPanel.setPatternRectangle();
-        }
-
-        if (event.getSource() == menuItemTrianglePattern) {
-            this.setStatusMessage("Padrão dinâmico alterado para 'Triângulo'!");
-            backgroundPanel.setPatternTriangle();
-        }
-
-        if (event.getSource() == menuItemStarPattern) {
-            this.setStatusMessage("Padrão dinâmico alterado para 'Estrela'!");
-            backgroundPanel.setPatternStar();
-        }
-
-        if (event.getSource() == menuItemNoPattern) {
-            this.setStatusMessage("Padrão dinâmico removido da tela!");
-            backgroundPanel.setNoPattern();
-        }
-
-        if (event.getSource() == menuItemRed) {
-            this.setStatusMessage("Cor de fundo alterada para 'Vermelho'!");
-            backgroundPanel.setBackgroundColor(new Color(255,99,71));
-        }
-
-        if (event.getSource() == menuItemPink) {
-            this.setStatusMessage("Cor de fundo alterada para 'Rosa'!");
-            backgroundPanel.setBackgroundColor(new Color(255,192,203));
-        }
-
-        if (event.getSource() == menuItemBlue) {
-            this.setStatusMessage("Cor de fundo alterada para 'Azul'!");
-            backgroundPanel.setBackgroundColor(new Color(135,206,250));
-        }
-
-        if (event.getSource() == menuItemGray) {
-            this.setStatusMessage("Cor de fundo alterada para 'Cinza'!");
-            backgroundPanel.setBackgroundColor(Color.lightGray);
-        }
-
-        if (event.getSource() == menuItemHelp) {
-            this.setStatusMessage("Opção 'Ajuda' selecionada!");
-            (new MessageScreen(this, "Ajuda - " + SystemInfo.getVersionName(), SystemInfo.getHelp())).setVisible(true);
-        }
-
-        if (event.getSource() == menuItemAbout) {
-            this.setStatusMessage("Opção 'Sobre' selecionada!");
-            (new MessageScreen(this, "Sobre - " + SystemInfo.getVersionName(), SystemInfo.getAbout())).setVisible(true);
         }
     }
 

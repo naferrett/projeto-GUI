@@ -17,7 +17,7 @@ class FileHandler {
         this.fileText = textArea;
     }
 
-    public void openFile(File file) throws IOException {
+    public void readFile(File file) throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(file));
         fileText.setText("");
 
@@ -28,7 +28,7 @@ class FileHandler {
         br.close();
     }
 
-    public void closeFile() {
+    public void removeFileText() {
         fileText.setText("");
     }
 }
