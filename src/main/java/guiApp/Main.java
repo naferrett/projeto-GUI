@@ -3,17 +3,19 @@
 
 package guiApp;
 
+import lombok.extern.log4j.Log4j2;
+
 import java.awt.HeadlessException;
 
+@Log4j2
 public class Main {
     public static void main(String[] args) {
         try {
             (new MainWindow()).initInterface();
         } catch (HeadlessException ex) {
-            System.out.println("Exceção do tipo HeadLessException capturada: " + ex.getMessage());
+           log.error("Exceção do tipo HeadLessException capturada: " + ex);
         } catch (Exception ex) {
-            System.out.println("Exceção genérica capturada: " + ex.getMessage());
-            ex.printStackTrace();
+            log.error("Exceção genérica capturada: " + ex.getMessage());
         }
     }
 }

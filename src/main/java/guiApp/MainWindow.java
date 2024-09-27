@@ -1,5 +1,7 @@
 package guiApp;
 
+import lombok.extern.log4j.Log4j2;
+
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -7,6 +9,7 @@ import java.io.Serial;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
+@Log4j2
 class MainWindow extends JFrame implements Runnable {
     @Serial
     private static final long serialVersionUID = 1L;
@@ -321,8 +324,8 @@ class MainWindow extends JFrame implements Runnable {
             backgroundPanel.repaint();
             try {
                 Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+            } catch (InterruptedException ex) {
+                log.error("Erro durante execução de Threads" + ex);
             }
             backgroundPanel.nextLine();
         }

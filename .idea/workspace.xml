@@ -4,14 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8dcb2505-7e65-4379-a36f-0559df32cad7" name="Changes" comment="MouseListenerClass unused">
+    <list default="true" id="8dcb2505-7e65-4379-a36f-0559df32cad7" name="Changes" comment="separating interface from events">
+      <change afterPath="$PROJECT_DIR$/src/main/java/teste/MenuTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/guiApp/BackgroundPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/guiApp/BackgroundPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/guiApp/FileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/guiApp/FileHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/guiApp/ImageDisplayPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/guiApp/ImageDisplayPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/guiApp/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/guiApp/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/guiApp/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/guiApp/MainWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/guiApp/WindowListenerClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/guiApp/WindowListenerClass.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +27,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
@@ -43,6 +44,7 @@
   "keyToString": {
     "Application.ColorChangingGUIExample.executor": "Run",
     "Application.Main.executor": "Run",
+    "Application.MenuTest.executor": "Run",
     "Application.MinimalExample.executor": "Run",
     "Application.guiApp.Main.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
@@ -50,7 +52,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/nathf/OneDrive/Documentos/unicamp/matérias/POO II/demonstracao_gui_basica 104",
+    "last_opened_file_path": "C:/Users/nathf/OneDrive/Documentos/unicamp/matérias/POO II/Ex-Fixacao/Ex3-Fixacao-Individual",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -63,6 +65,8 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\nathf\OneDrive\Documentos\unicamp\matérias\POO II\Projeto-I-GUI\src\main\java\guiApp\Menu\ConfigMenu" />
+      <recent name="C:\Users\nathf\OneDrive\Documentos\unicamp\matérias\POO II\Projeto-I-GUI\src\main\java\guiApp\Menu\HelpMenu" />
       <recent name="C:\Users\nathf\OneDrive\Documentos\unicamp\matérias\POO II\Projeto-I-GUI\src\main\java\guiApp" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -91,6 +95,19 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="gui.app.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MenuTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="teste.MenuTest" />
+      <module name="Projeto-I-GUI" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="teste.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -127,6 +144,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.guiApp.Main" />
+        <item itemvalue="Application.MenuTest" />
         <item itemvalue="Application.MinimalExample" />
         <item itemvalue="Application.ColorChangingGUIExample" />
         <item itemvalue="Application.Main" />
@@ -155,7 +173,10 @@
       <workItem from="1727134395179" duration="189000" />
       <workItem from="1727181404193" duration="12114000" />
       <workItem from="1727217989183" duration="7478000" />
-      <workItem from="1727268628948" duration="18933000" />
+      <workItem from="1727268628948" duration="23878000" />
+      <workItem from="1727301793262" duration="269000" />
+      <workItem from="1727370425496" duration="522000" />
+      <workItem from="1727439830718" duration="8441000" />
     </task>
     <task id="LOCAL-00001" summary="first commit - adding project version 1.0.1">
       <option name="closed" value="true" />
@@ -229,7 +250,23 @@
       <option name="project" value="LOCAL" />
       <updated>1727294943915</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="adding comments on top of each class">
+      <option name="closed" value="true" />
+      <created>1727296189204</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1727296189204</updated>
+    </task>
+    <task id="LOCAL-00011" summary="separating interface from events">
+      <option name="closed" value="true" />
+      <created>1727447851579</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1727447851579</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -256,7 +293,9 @@
     <MESSAGE value="removing unnecessary comments" />
     <MESSAGE value="modularizing MessageScreen" />
     <MESSAGE value="MouseListenerClass unused" />
-    <option name="LAST_COMMIT_MESSAGE" value="MouseListenerClass unused" />
+    <MESSAGE value="adding comments on top of each class" />
+    <MESSAGE value="separating interface from events" />
+    <option name="LAST_COMMIT_MESSAGE" value="separating interface from events" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
