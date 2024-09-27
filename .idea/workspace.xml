@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8dcb2505-7e65-4379-a36f-0559df32cad7" name="Changes" comment="adding @Serial annotation">
+    <list default="true" id="8dcb2505-7e65-4379-a36f-0559df32cad7" name="Changes" comment="worksapce">
       <change afterPath="$PROJECT_DIR$/src/main/java/teste/MenuTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/guiApp/EventHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/guiApp/EventHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -171,7 +171,7 @@
       <workItem from="1727268628948" duration="23878000" />
       <workItem from="1727301793262" duration="269000" />
       <workItem from="1727370425496" duration="522000" />
-      <workItem from="1727439830718" duration="9326000" />
+      <workItem from="1727439830718" duration="9610000" />
     </task>
     <task id="LOCAL-00001" summary="first commit - adding project version 1.0.1">
       <option name="closed" value="true" />
@@ -277,7 +277,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727448554487</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="worksapce">
+      <option name="closed" value="true" />
+      <created>1727450008335</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1727450008335</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -308,7 +316,8 @@
     <MESSAGE value="separating interface from events" />
     <MESSAGE value="adding logs for errors" />
     <MESSAGE value="adding @Serial annotation" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding @Serial annotation" />
+    <MESSAGE value="worksapce" />
+    <option name="LAST_COMMIT_MESSAGE" value="worksapce" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

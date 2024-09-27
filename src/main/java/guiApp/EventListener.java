@@ -8,12 +8,12 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 
-public class EventHandler implements ActionListener {
+public class EventListener implements ActionListener {
     private FileHandler fileHandler;
     private MainWindow mainWindow;
     private File currentFile;
 
-    EventHandler(FileHandler filehandler, MainWindow mainwindow) {
+    EventListener(FileHandler filehandler, MainWindow mainwindow) {
         this.fileHandler = filehandler;
         this.mainWindow = mainwindow;
     }
@@ -25,7 +25,7 @@ public class EventHandler implements ActionListener {
         switch (actionCommand) {
             case "Open File":
                 mainWindow.setStatusMessage("Opção 'Abrir Arquivo' selecionada!");
-                openFile();
+                processFile();
                 break;
 
             case "Close File":
@@ -108,7 +108,17 @@ public class EventHandler implements ActionListener {
         (new MessageScreen(mainWindow, "Sobre - " + SystemInfo.getVersionName(), SystemInfo.getAbout())).setVisible(true);
     }
 
-    private void openFile() {
+    private void processFile() {
+        JFileChooser fileChooser = createFileChooser();
+        int returnValue = fileChooser.showOpenDialog(mainWindow);
+
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+            currentFile = fileChooser.getSelectedFile();
+            openFile(currentFile);
+        }
+    }
+
+    private JFileChooser createFileChooser() {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Procurar Arquivo");
         fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
@@ -116,16 +126,15 @@ public class EventHandler implements ActionListener {
         FileNameExtensionFilter filter = new FileNameExtensionFilter("Arquivo de texto", "txt");
         fileChooser.setFileFilter(filter);
 
-        int returnValue = fileChooser.showOpenDialog(mainWindow);
+        return fileChooser;
+    }
 
-        if (returnValue == JFileChooser.APPROVE_OPTION) {
-            currentFile = fileChooser.getSelectedFile();
-            try {
-                fileHandler.readFile(currentFile);
-                mainWindow.setStatusMessage("Arquivo aberto: " + currentFile.getName());
-            } catch (IOException ex) {
-                JOptionPane.showMessageDialog(mainWindow, "Erro ao abrir o arquivo.", "Erro", JOptionPane.ERROR_MESSAGE);
-            }
+    private void openFile(File file) {
+        try {
+            fileHandler.readFile(file);
+            mainWindow.setStatusMessage("Arquivo aberto: " + file.getName());
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(mainWindow, "Erro ao abrir o arquivo.", "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }
 

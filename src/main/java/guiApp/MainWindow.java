@@ -38,7 +38,7 @@ class MainWindow extends JFrame implements Runnable {
     private JMenuItem menuItemHelp;
     private JMenuItem menuItemAbout;
     private JScrollPane scrollPane;
-    private final EventHandler eventHandler;
+    private final EventListener eventListener;
     //private MouseListenerClass mouseEventListener;
     BackgroundPanel backgroundPanel;
 
@@ -52,8 +52,8 @@ class MainWindow extends JFrame implements Runnable {
         createAddToMenu();
 
         this.fileHandler = new FileHandler(fileText);
-        this.eventHandler = new EventHandler(fileHandler, this);
-        addMenuListeners(eventHandler);
+        this.eventListener = new EventListener(fileHandler, this);
+        addMenuListeners(eventListener);
     }
 
     private void windowConfig() {
@@ -199,22 +199,22 @@ class MainWindow extends JFrame implements Runnable {
 
         // Itens do submenu
         menuItemRectanglePattern = new JMenuItem("Retângulo");
-        menuItemRectanglePattern.addActionListener(eventHandler);
+        menuItemRectanglePattern.addActionListener(eventListener);
         menuItemRectanglePattern.setActionCommand("Rectangle Pattern");
         menuItemChoosePattern.add(menuItemRectanglePattern);
 
         menuItemTrianglePattern = new JMenuItem("Triângulo");
-        menuItemTrianglePattern.addActionListener(eventHandler);
+        menuItemTrianglePattern.addActionListener(eventListener);
         menuItemTrianglePattern.setActionCommand("Triangle Pattern");
         menuItemChoosePattern.add(menuItemTrianglePattern);
 
         menuItemStarPattern = new JMenuItem("Estrela");
-        menuItemStarPattern.addActionListener(eventHandler);
+        menuItemStarPattern.addActionListener(eventListener);
         menuItemStarPattern.setActionCommand("Star Pattern");
         menuItemChoosePattern.add(menuItemStarPattern);
 
         menuItemNoPattern = new JMenuItem("Limpar");
-        menuItemNoPattern.addActionListener(eventHandler);
+        menuItemNoPattern.addActionListener(eventListener);
         menuItemNoPattern.setActionCommand("No Pattern");
         menuItemChoosePattern.add(menuItemNoPattern);
 
@@ -253,17 +253,17 @@ class MainWindow extends JFrame implements Runnable {
 
         // Itens do submenu
         menuItemSpeed05x = new JMenuItem("Velocidade 0.5x");
-        menuItemSpeed05x.addActionListener(eventHandler);
+        menuItemSpeed05x.addActionListener(eventListener);
         menuItemSpeed05x.setActionCommand("Speed 0.5x");
         menuItemChooseSpeed.add(menuItemSpeed05x);
 
         menuItemSpeed1x = new JMenuItem("Velocidade 1x");
-        menuItemSpeed1x.addActionListener(eventHandler);
+        menuItemSpeed1x.addActionListener(eventListener);
         menuItemSpeed1x.setActionCommand("Speed 1x");
         menuItemChooseSpeed.add(menuItemSpeed1x);
 
         menuItemSpeed2x = new JMenuItem("Velocidade 2x");
-        menuItemSpeed2x.addActionListener(eventHandler);
+        menuItemSpeed2x.addActionListener(eventListener);
         menuItemSpeed2x.setActionCommand("Speed 2x");
         menuItemChooseSpeed.add(menuItemSpeed2x);
 
