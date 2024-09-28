@@ -1,12 +1,11 @@
 package guiApp;
 
-import javax.swing.*;
-import javax.swing.filechooser.FileNameExtensionFilter;
+import guiApp.file.FileHandler;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.io.IOException;
 
 public class EventListener implements ActionListener {
     private FileHandler fileHandler;
@@ -25,12 +24,12 @@ public class EventListener implements ActionListener {
         switch (actionCommand) {
             case "Open File":
                 mainWindow.setStatusMessage("Opção 'Abrir Arquivo' selecionada!");
-                processFile();
+                fileHandler.processFile();
                 break;
 
             case "Close File":
                 mainWindow.setStatusMessage("Opção 'Fechar Arquivo' selecionada!");
-                closeFile();
+                fileHandler.closeFile();
                 break;
 
             case "Exit":
@@ -108,43 +107,4 @@ public class EventListener implements ActionListener {
         (new MessageScreen(mainWindow, "Sobre - " + SystemInfo.getVersionName(), SystemInfo.getAbout())).setVisible(true);
     }
 
-    private void processFile() {
-        JFileChooser fileChooser = createFileChooser();
-        int returnValue = fileChooser.showOpenDialog(mainWindow);
-
-        if (returnValue == JFileChooser.APPROVE_OPTION) {
-            currentFile = fileChooser.getSelectedFile();
-            openFile(currentFile);
-        }
-    }
-
-    private JFileChooser createFileChooser() {
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setDialogTitle("Procurar Arquivo");
-        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("Arquivo de texto", "txt");
-        fileChooser.setFileFilter(filter);
-
-        return fileChooser;
-    }
-
-    private void openFile(File file) {
-        try {
-            fileHandler.readFile(file);
-            mainWindow.setStatusMessage("Arquivo aberto: " + file.getName());
-        } catch (IOException ex) {
-            JOptionPane.showMessageDialog(mainWindow, "Erro ao abrir o arquivo.", "Erro", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-
-    private void closeFile() {
-        try {
-            fileHandler.removeFileText();
-            mainWindow.setStatusMessage("Arquivo fechado: " + currentFile.getName());
-            currentFile = null;
-        } catch (NullPointerException ex) {
-            JOptionPane.showMessageDialog(mainWindow, "Nenhum arquivo aberto foi encontrado.", "Erro", JOptionPane.ERROR_MESSAGE);
-        }
-    }
 }

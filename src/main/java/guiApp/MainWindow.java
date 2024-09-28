@@ -1,5 +1,7 @@
 package guiApp;
 
+import guiApp.file.FileHandler;
+import guiApp.menu.MenuHandler;
 import lombok.extern.log4j.Log4j2;
 
 import java.awt.*;
@@ -10,17 +12,15 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 @Log4j2
-class MainWindow extends JFrame implements Runnable {
+public class MainWindow extends JFrame implements Runnable {
 
     @Serial
     private static final long serialVersionUID = 1L;
     private boolean threadRunning;
     private JLabel labelStatus;
-    private MenuHandler menuHandler;
     private JTextArea fileText;
     private FileHandler fileHandler;
     private JScrollPane scrollPane;
-    private final EventListener eventListener;
     //private MouseListenerClass mouseEventListener;
     BackgroundPanel backgroundPanel;
 
@@ -32,11 +32,10 @@ class MainWindow extends JFrame implements Runnable {
         windowConfig();
         initAddComponents();
 
+        this.fileHandler = new FileHandler(this, fileText);
+        EventListener eventListener = new EventListener(fileHandler, this);
 
-        this.fileHandler = new FileHandler(fileText);
-        this.eventListener = new EventListener(fileHandler, this);
-
-        menuHandler = new MenuHandler(this);
+        MenuHandler menuHandler = new MenuHandler(this);
         menuHandler.createAddToMenu();
 
         this.addMenuListeners(eventListener);
@@ -55,6 +54,7 @@ class MainWindow extends JFrame implements Runnable {
             this.setIconImage(ImageIO.read(this.getClass().getResource(SystemInfo.iconImage)));
         } catch (IOException | NullPointerException ex) {
             JOptionPane.showMessageDialog(this, "Erro ao carregar o ícone.", "Erro", JOptionPane.ERROR_MESSAGE);
+            log.error(ex);
         }
     }
 
@@ -105,7 +105,7 @@ class MainWindow extends JFrame implements Runnable {
         fileText.setLineWrap(true);
         fileText.setWrapStyleWord(true);
         //fileText.setColumns(35);
-        fileHandler = new FileHandler(fileText);
+        fileHandler = new FileHandler(this, fileText);
         this.scrollPane = new JScrollPane(fileText);
 
         GridBagConstraints gbc = new GridBagConstraints();
@@ -127,7 +127,7 @@ class MainWindow extends JFrame implements Runnable {
 //        backgroundPanel.addMouseListener(mouseEventListener);
     }
 
-    void setStatusMessage(String message)
+    public void setStatusMessage(String message)
     {
         this.labelStatus.setText(message);
     }

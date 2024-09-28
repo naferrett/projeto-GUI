@@ -2,6 +2,8 @@
 
 package guiApp;
 
+import lombok.extern.log4j.Log4j2;
+
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -11,6 +13,7 @@ import java.net.URL;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
+@Log4j2
 class ImageDisplayPanel extends JPanel {
     @Serial
     private static final long serialVersionUID = 1L;
@@ -26,10 +29,8 @@ class ImageDisplayPanel extends JPanel {
             URL auxURL = this.getClass().getResource(SystemInfo.systemImage);
             currentImage = ImageIO.read(auxURL);
             auxGraphics.drawImage(currentImage, 20, 50, 180, 190, 0, 0, currentImage.getWidth(null), currentImage.getHeight(null), null);
-        } catch (IOException e) {
-            System.out.println("Arquivo de imagem não encontrado. " + e.getMessage());
-        } catch (Exception e) {
-            System.out.println("Erro ao carregar arquivo de imagem. " + e.getMessage());
+        } catch (IOException ex) {
+            log.error(ex);
         }
     }
 

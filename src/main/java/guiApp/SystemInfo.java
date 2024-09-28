@@ -33,7 +33,7 @@ class SystemInfo {
     static String getHelp() {
         StringBuilder text = new StringBuilder();
 
-        text.append("Este programa tem como objetivo demonstrar o uso de interface gráfica em Java que explore a criação de interfaces, integração com arquivos, uso de threads e personalização de componentes. \n");
+        text.append("Este programa tem como objetivo demonstrar o uso de interface gráfica em Java enquanto explora a criação de interfaces, integração com arquivos, uso de threads e personalização de componentes. \n");
         text.append("\n");
         text.append("A aplicação demonstra a mecânica de ouvintes, manipulação de arquivos, criação de diálogos e animações dinâmicas.\n");
         text.append("\n");
