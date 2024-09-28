@@ -17,17 +17,15 @@ import javax.swing.JPanel;
 class ImageDisplayPanel extends JPanel {
     @Serial
     private static final long serialVersionUID = 1L;
-    private Image currentImage;
-    private Graphics2D auxGraphics;
 
     @Override
     public void paint(Graphics g) {
         super.paintComponent(g);
-        auxGraphics = (Graphics2D) g;
+        Graphics2D auxGraphics = (Graphics2D) g;
 
         try {
             URL auxURL = this.getClass().getResource(SystemInfo.systemImage);
-            currentImage = ImageIO.read(auxURL);
+            Image currentImage = ImageIO.read(auxURL);
             auxGraphics.drawImage(currentImage, 20, 50, 180, 190, 0, 0, currentImage.getWidth(null), currentImage.getHeight(null), null);
         } catch (IOException ex) {
             log.error(ex);

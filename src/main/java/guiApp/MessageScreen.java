@@ -6,13 +6,15 @@ package guiApp;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.Serial;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
 class MessageScreen extends JDialog implements ActionListener {
-    private static final long    serialVersionUID = 1L;
+    @Serial
+    private static final long serialVersionUID = 1L;
     private final JPanel textPanel;
     private final JPanel buttonPanel;
     private final ImageDisplayPanel imagePanel;
@@ -36,7 +38,7 @@ class MessageScreen extends JDialog implements ActionListener {
         imagePanel = createImagePanel();
 
         JButton exitButton = new JButton();
-        buttonPanel = createButtonPanel(exitButton);
+        buttonPanel = createButtonPanel();
 
         addComponents();
     }
@@ -74,9 +76,9 @@ class MessageScreen extends JDialog implements ActionListener {
         return panel;
     }
 
-    private JPanel createButtonPanel(JButton exitButton) {
+    private JPanel createButtonPanel() {
         JPanel buttonPanel = new JPanel();
-        exitButton = new JButton("Fechar");
+        JButton exitButton = new JButton("Fechar");
         exitButton.addActionListener(this);
         buttonPanel.add(exitButton);
         return buttonPanel;

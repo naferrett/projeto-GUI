@@ -15,9 +15,8 @@ import java.awt.event.ActionListener;
 import java.io.File;
 
 public class EventListener implements ActionListener {
-    private FileHandler fileHandler;
-    private MainWindow mainWindow;
-    private File currentFile;
+    private final FileHandler fileHandler;
+    private final MainWindow mainWindow;
 
     EventListener(FileHandler filehandler, MainWindow mainwindow) {
         this.fileHandler = filehandler;
@@ -97,10 +96,12 @@ public class EventListener implements ActionListener {
                 break;
 
             case "Help Message":
+                mainWindow.setStatusMessage("Opção 'Ajuda' selecionada!");
                 showHelpMessage();
                 break;
 
             case "About Message":
+                mainWindow.setStatusMessage("Opção 'Sobre' selecionada!");
                 showAboutMessage();
                 break;
         }
