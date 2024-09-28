@@ -1,3 +1,7 @@
+/*
+ * É responsável por criar o menu "Ajuda" da aplicação, incluindo opções para exibir mensagens de ajuda e informações sobre a aplicação.
+ */
+
 package guiApp.menu;
 
 import javax.swing.*;

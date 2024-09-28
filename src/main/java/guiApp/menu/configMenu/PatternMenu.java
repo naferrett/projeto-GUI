@@ -1,3 +1,7 @@
+/*
+ * Cria um submenu de seleção de padrões para alterar o fundo da interface gráfica.
+ */
+
 package guiApp.menu.configMenu;
 
 import javax.swing.*;

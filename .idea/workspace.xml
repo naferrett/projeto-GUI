@@ -4,22 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8dcb2505-7e65-4379-a36f-0559df32cad7" name="Changes" comment="creating a menuhandler class">
-      <change afterPath="$PROJECT_DIR$/src/main/java/guiApp/file/FileHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/guiApp/file/FileReader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/guiApp/menu/FileMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/guiApp/menu/HelpMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/guiApp/menu/configMenu/ColorMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/guiApp/menu/configMenu/ConfigurationMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/guiApp/menu/configMenu/PatternMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/guiApp/menu/configMenu/SpeedMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/teste/MenuTest.java" afterDir="false" />
+    <list default="true" id="8dcb2505-7e65-4379-a36f-0559df32cad7" name="Changes" comment="creating packages and adding log">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/guiApp/EventListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/guiApp/EventListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/guiApp/FileHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/guiApp/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/guiApp/MainWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/guiApp/MenuHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/guiApp/menu/MenuHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/guiApp/SystemInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/guiApp/SystemInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/guiApp/file/FileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/guiApp/file/FileHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/guiApp/file/FileReaderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/guiApp/file/FileReaderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/guiApp/menu/configMenu/ColorMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/guiApp/menu/configMenu/ColorMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/guiApp/menu/configMenu/ConfigurationMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/guiApp/menu/configMenu/ConfigurationMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/guiApp/menu/configMenu/PatternMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/guiApp/menu/configMenu/PatternMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/guiApp/menu/configMenu/SpeedMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/guiApp/menu/configMenu/SpeedMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,7 +180,7 @@
       <workItem from="1727458003695" duration="1374000" />
       <workItem from="1727465087892" duration="80000" />
       <workItem from="1727477502772" duration="1824000" />
-      <workItem from="1727479339613" duration="2996000" />
+      <workItem from="1727479339613" duration="3843000" />
     </task>
     <task id="LOCAL-00001" summary="first commit - adding project version 1.0.1">
       <option name="closed" value="true" />
@@ -318,7 +310,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727478008613</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="creating packages and adding log">
+      <option name="closed" value="true" />
+      <created>1727482779080</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1727482779080</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -352,7 +352,8 @@
     <MESSAGE value="worksapce" />
     <MESSAGE value="eventHandler name change to eventListener and more methods" />
     <MESSAGE value="creating a menuhandler class" />
-    <option name="LAST_COMMIT_MESSAGE" value="creating a menuhandler class" />
+    <MESSAGE value="creating packages and adding log" />
+    <option name="LAST_COMMIT_MESSAGE" value="creating packages and adding log" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

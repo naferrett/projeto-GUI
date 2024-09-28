@@ -1,3 +1,7 @@
+/*
+ * Cria um submenu de seleção de velocidades para alterar a velocidade da animação do funda da interface gráfica.
+ */
+
 package guiApp.menu.configMenu;
 
 import javax.swing.*;

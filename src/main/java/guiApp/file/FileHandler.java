@@ -1,6 +1,7 @@
-/* Essa classe é responsável por executar a abertura e leitura de um arquivo
-* para que ele seja mostrado na interface. Também limpa a tela quando um
-* arquivo é fechado. */
+/*
+ * A classe FileHandler gerencia a abertura, leitura e fechamento de arquivos de texto em uma interface gráfica, usando
+ * um JFileChooser para selecionar arquivos e exibir o conteúdo do arquivo em um JTextArea.
+ */
 
 package guiApp.file;
 

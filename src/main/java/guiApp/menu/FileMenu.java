@@ -1,3 +1,8 @@
+/*
+ * É responsável por criar o menu "Arquivo" da aplicação, incluindo opções para abrir, fechar e sair da aplicação.
+ */
+
+
 package guiApp.menu;
 
 import javax.swing.*;

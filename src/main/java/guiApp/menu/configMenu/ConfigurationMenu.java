@@ -1,3 +1,8 @@
+/*
+ * É responsável por criar o menu de configuração da aplicação, incluindo submenus
+ * para alterar o padrão de fundo, cor de fundo, e velocidade.
+ */
+
 package guiApp.menu.configMenu;
 
 import javax.swing.*;

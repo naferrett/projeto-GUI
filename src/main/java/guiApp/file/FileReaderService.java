@@ -1,3 +1,5 @@
+/* Essa classe é responsável por executar a abertura e leitura do arquivo qu será mostrado na interface gráfica. */
+
 package guiApp.file;
 
 import java.io.BufferedReader;

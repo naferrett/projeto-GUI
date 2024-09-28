@@ -1,3 +1,10 @@
+/*
+ * A classe EventListener lida com os eventos de ação disparados pelos menus e itens de interface.
+ * Essa classe implementa a interface ActionListener, respondendo a comandos como abrir/fechar arquivos, alterar padrões e cores de fundo,
+ * mudar a velocidade de animação e exibir mensagens de ajuda ou sobre a aplicação.
+ */
+
+
 package guiApp;
 
 import guiApp.file.FileHandler;
