@@ -37,7 +37,6 @@ class MessageScreen extends JDialog implements ActionListener {
 
         imagePanel = createImagePanel();
 
-        JButton exitButton = new JButton();
         buttonPanel = createButtonPanel();
 
         addComponents();

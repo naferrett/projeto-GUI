@@ -11,18 +11,18 @@ public class SpeedMenu {
         JMenu menuItemChooseSpeed = new JMenu("Alterar Velocidade");
         menuItemChooseSpeed.setMnemonic('D');
 
-        menuItemChooseSpeed.add(create05xItem());
+        menuItemChooseSpeed.add(create0_5xItem());
         menuItemChooseSpeed.add(create1xItem());
-        menuItemChooseSpeed.add(create1ponto5xItem());
+        menuItemChooseSpeed.add(create1_5xItem());
         menuItemChooseSpeed.add(create2xItem());
 
         return menuItemChooseSpeed;
     }
 
-    private JMenuItem create05xItem() {
-        JMenuItem menuItemSpeed05x = new JMenuItem("Velocidade 0.5x");
-        menuItemSpeed05x.setActionCommand("Speed 0.5x");
-        return menuItemSpeed05x;
+    private JMenuItem create0_5xItem() {
+        JMenuItem menuItemSpeed0_5x = new JMenuItem("Velocidade 0.5x");
+        menuItemSpeed0_5x.setActionCommand("Speed 0.5x");
+        return menuItemSpeed0_5x;
     }
 
     private JMenuItem create1xItem() {
@@ -31,10 +31,10 @@ public class SpeedMenu {
         return menuItemSpeed1x;
     }
 
-    private JMenuItem create1ponto5xItem() {
-        JMenuItem menuItemSpeed1ponto5x = new JMenuItem("Velocidade 1.5x");
-        menuItemSpeed1ponto5x.setActionCommand("Speed 1.5x");
-        return menuItemSpeed1ponto5x;
+    private JMenuItem create1_5xItem() {
+        JMenuItem menuItemSpeed1_5x = new JMenuItem("Velocidade 1.5x");
+        menuItemSpeed1_5x.setActionCommand("Speed 1.5x");
+        return menuItemSpeed1_5x;
     }
 
     private JMenuItem create2xItem() {

@@ -84,18 +84,22 @@ public class EventListener implements ActionListener {
                 break;
 
             case "Speed 0.5x":
+                mainWindow.setStatusMessage("Velocidade do fundo dinâmico alterada para 0.5x!");
                 mainWindow.setAnimationSpeed(0.5);
                 break;
 
             case "Speed 1x":
+                mainWindow.setStatusMessage("Velocidade do fundo dinâmico alterada para 1.0x!");
                 mainWindow.setAnimationSpeed(1.0);
                 break;
 
             case "Speed 1.5x":
+                mainWindow.setStatusMessage("Velocidade do fundo dinâmico alterada para 1.5x!");
                 mainWindow.setAnimationSpeed(1.5);
                 break;
 
             case "Speed 2x":
+                mainWindow.setStatusMessage("Velocidade do fundo dinâmico alterada para 2.0x!");
                 mainWindow.setAnimationSpeed(2.0);
                 break;
 

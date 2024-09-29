@@ -14,7 +14,6 @@ import javax.swing.*;
 @Log4j2
 public class MainWindow extends JFrame implements Runnable {
 
-    private double animationSpeed = 1.0; //tentativa de criar variavel que altere a velocidade
     @Serial
     private static final long serialVersionUID = 1L;
     private boolean threadRunning;
@@ -24,6 +23,7 @@ public class MainWindow extends JFrame implements Runnable {
     private JScrollPane scrollPane;
     //private MouseListenerClass mouseEventListener;
     BackgroundPanel backgroundPanel;
+    private double animationSpeed = 1.0; //tentativa de criar variavel que altere a velocidade
 
     MainWindow() throws HeadlessException {
         super(SystemInfo.getVersionName());
@@ -57,6 +57,14 @@ public class MainWindow extends JFrame implements Runnable {
             JOptionPane.showMessageDialog(this, "Erro ao carregar o ícone.", "Erro", JOptionPane.ERROR_MESSAGE);
             log.error(ex);
         }
+    }
+
+    public void setAnimationSpeed(double speed){
+        this.animationSpeed = speed;
+    }
+
+    public void setStatusMessage(String message) {
+        this.labelStatus.setText(message);
     }
 
     private void initAddComponents() {
@@ -128,11 +136,6 @@ public class MainWindow extends JFrame implements Runnable {
 //        backgroundPanel.addMouseListener(mouseEventListener);
     }
 
-    public void setStatusMessage(String message)
-    {
-        this.labelStatus.setText(message);
-    }
-
     void initInterface() {
         this.setStatusMessage(SystemInfo.university);
         this.setVisible(true);
@@ -178,10 +181,5 @@ public class MainWindow extends JFrame implements Runnable {
             }
             backgroundPanel.nextLine();
         }
-    }
-
-    public void setAnimationSpeed(double speed){
-        this.animationSpeed = speed;
-        setStatusMessage("Velocidade do fundo dinâmico alterada para " + speed + "x!");
     }
 }
