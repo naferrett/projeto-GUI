@@ -14,6 +14,7 @@ import javax.swing.*;
 @Log4j2
 public class MainWindow extends JFrame implements Runnable {
 
+    private double animationSpeed = 1.0; //tentativa de criar variavel que altere a velocidade
     @Serial
     private static final long serialVersionUID = 1L;
     private boolean threadRunning;
@@ -171,7 +172,7 @@ public class MainWindow extends JFrame implements Runnable {
         while (this.threadRunning) {
             backgroundPanel.repaint();
             try {
-                Thread.sleep(1000);
+                Thread.sleep((long)(1000/animationSpeed));
             } catch (InterruptedException ex) {
                 log.error("Erro durante execução de Threads" + ex);
             }
@@ -179,4 +180,8 @@ public class MainWindow extends JFrame implements Runnable {
         }
     }
 
+    public void setAnimationSpeed(double speed){
+        this.animationSpeed = speed;
+        setStatusMessage("Velocidade do fundo dinâmico alterada para " + speed + "x!");
+    }
 }

@@ -13,6 +13,7 @@ public class SpeedMenu {
 
         menuItemChooseSpeed.add(create05xItem());
         menuItemChooseSpeed.add(create1xItem());
+        menuItemChooseSpeed.add(create1ponto5xItem());
         menuItemChooseSpeed.add(create2xItem());
 
         return menuItemChooseSpeed;
@@ -28,6 +29,12 @@ public class SpeedMenu {
         JMenuItem menuItemSpeed1x = new JMenuItem("Velocidade 1x");
         menuItemSpeed1x.setActionCommand("Speed 1x");
         return menuItemSpeed1x;
+    }
+
+    private JMenuItem create1ponto5xItem() {
+        JMenuItem menuItemSpeed1ponto5x = new JMenuItem("Velocidade 1.5x");
+        menuItemSpeed1ponto5x.setActionCommand("Speed 1.5x");
+        return menuItemSpeed1ponto5x;
     }
 
     private JMenuItem create2xItem() {
