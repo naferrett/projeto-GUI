@@ -15,7 +15,7 @@ public class Main {
         } catch (HeadlessException ex) {
            log.error("Exceção do tipo HeadLessException capturada: " + ex);
         } catch (Exception ex) {
-            log.error("Exceção genérica capturada: " + ex.getMessage());
+            log.error("Exceção genérica capturada: " + ex);
         }
     }
 }

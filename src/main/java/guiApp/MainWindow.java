@@ -113,7 +113,6 @@ public class MainWindow extends JFrame implements Runnable {
         fileText.setEditable(false);
         fileText.setLineWrap(true);
         fileText.setWrapStyleWord(true);
-        //fileText.setColumns(35);
         fileHandler = new FileHandler(this, fileText);
         this.scrollPane = new JScrollPane(fileText);
 
