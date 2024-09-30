@@ -24,8 +24,6 @@ class BackgroundPanel extends JPanel {
         super();
         this.foregroundColor = Color.white;
         this.backgroundColor = Color.lightGray;
-//        this.attractors = new Point[maxAtratores];
-//        this.rand = new Random();
 
         this.setForeground(foregroundColor);
         this.setBackground(backgroundColor);
@@ -43,35 +41,6 @@ class BackgroundPanel extends JPanel {
             originalCanvas.drawLine(attractors[i].x, attractors[i].y, attractors[nextIndex].x, attractors[nextIndex].y);
         }
     }
-
-//    @Override
-//    protected void paintComponent(Graphics originalCanvas) {
-//        super.paintComponent(originalCanvas);
-//        Graphics2D canvas = (Graphics2D) originalCanvas;
-//
-//        canvas.setColor(foregroundColor);
-//        setBackground(backgroundColor);
-//
-//        int maxX = this.getWidth();
-//        int maxY = this.getHeight();
-//
-//        int limit = 1;
-//
-//        for (int lineCount = 0; lineCount < limit; lineCount++) {
-//            for (Point currentAttractor : attractors) {
-//                if (currentAttractor != null) {
-//                    canvas.drawLine((int) currentAttractor.getX(), (int) currentAttractor.getY(), rand.nextInt(maxX), rand.nextInt(maxY));
-//                }
-//            }
-//        }
-//
-//    }
-
-//    public void setForegroundColor(Color newColor) {
-//        this.foregroundColor = newColor;
-//        this.setForeground(newColor);
-//        repaint();
-//    }
 
     public void setBackgroundColor(Color newColor) {
         this.backgroundColor = newColor;
@@ -102,6 +71,7 @@ class BackgroundPanel extends JPanel {
         currentLine = 0;
         repaint();
     }
+
     public void setPatternTriangle() {
         this.attractors = new Point[3];
         int maxY = this.getHeight();
@@ -153,13 +123,4 @@ class BackgroundPanel extends JPanel {
         }
         repaint();
     }
-
-//    public void setNewAttractor(Point newAttractor) {
-//        // Movendo atratores para a esquerda e adicionando o novo atrator no final
-//        for (int index = 0; index < (attractors.length - 1); index++) {
-//            attractors[index] = attractors[index + 1];
-//        }
-//        attractors[attractors.length - 1] = newAttractor;
-//        repaint();
-//    }
 }
