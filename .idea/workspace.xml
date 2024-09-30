@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8dcb2505-7e65-4379-a36f-0559df32cad7" name="Changes" comment="adding a second button to message screen and correcting project version">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/guiApp/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/guiApp/MainWindow.java" afterDir="false" />
-    </list>
+    <list default="true" id="8dcb2505-7e65-4379-a36f-0559df32cad7" name="Changes" comment="adding comments" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -193,7 +190,7 @@
       <workItem from="1727477502772" duration="1824000" />
       <workItem from="1727479339613" duration="4612000" />
       <workItem from="1727702345148" duration="89000" />
-      <workItem from="1727702450064" duration="3293000" />
+      <workItem from="1727702450064" duration="3442000" />
     </task>
     <task id="LOCAL-00001" summary="first commit - adding project version 1.0.1">
       <option name="closed" value="true" />
@@ -387,7 +384,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727704864504</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="adding comments">
+      <option name="closed" value="true" />
+      <created>1727705889775</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1727705889775</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -428,7 +433,8 @@
     <MESSAGE value="removing comments" />
     <MESSAGE value="fixing try catch" />
     <MESSAGE value="adding a second button to message screen and correcting project version" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding a second button to message screen and correcting project version" />
+    <MESSAGE value="adding comments" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding comments" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
