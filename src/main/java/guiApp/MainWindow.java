@@ -23,7 +23,7 @@ public class MainWindow extends JFrame implements Runnable {
     private JScrollPane scrollPane;
     //private MouseListenerClass mouseEventListener;
     BackgroundPanel backgroundPanel;
-    private double animationSpeed = 1.0; //tentativa de criar variavel que altere a velocidade
+    private double animationSpeed = 1.0;
 
     MainWindow() throws HeadlessException {
         super(SystemInfo.getVersionName());
@@ -79,18 +79,14 @@ public class MainWindow extends JFrame implements Runnable {
 
     private void initBackgroundPanel() {
         this.backgroundPanel = new BackgroundPanel();
-        this.backgroundPanel.setLayout(new GridBagLayout());
-
-        GridBagConstraints gbc = new GridBagConstraints();
 
         JLabel label = new JLabel("Arquivo de texto:");
         label.setLabelFor(fileText);
 
-        gbc.fill = GridBagConstraints.CENTER;
-        gbc.gridx = 0; // 'gridx' e 'gridy' posicionam o elemento em relação aos eixos posicionados ao centro
-        gbc.gridy = 0;
+        this.backgroundPanel.setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(20, 10, 20, 10); // Padding interno do elemento em relação ao panel
-        //gbc.weightx = 1.0;
+
         this.backgroundPanel.add(label, gbc);
     }
 
@@ -117,11 +113,10 @@ public class MainWindow extends JFrame implements Runnable {
         this.scrollPane = new JScrollPane(fileText);
 
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.weightx = 1.0; // Aumenta a caixa de texto na horizontal
-        gbc.weighty = 1.0; // Aumenta a caixa de texto na vertical
-        // gbc.gridx = 0; // Column 0
-        gbc.gridy = 1; // Linha 1
-        gbc.fill = GridBagConstraints.BOTH; //Aumenta a caixa em tamanho e largura
+        gbc.weightx = 1.0; // Aumenta a área de texto na horizontal
+        gbc.weighty = 1.0; // Aumenta a área de texto na vertical
+        gbc.gridy = 1; // Área de texto na linha 1 (segunda linha), depois do JLabel
+        gbc.fill = GridBagConstraints.BOTH; // Aumenta a caixa em tamanho e largura
         gbc.insets = new Insets(0, 70, 50, 70);
 
         this.backgroundPanel.add(new JScrollPane(fileText), gbc);
@@ -130,9 +125,6 @@ public class MainWindow extends JFrame implements Runnable {
     private void initListeners() {
         WindowListenerClass windowEventListener = new WindowListenerClass(this);
         this.addWindowListener(windowEventListener);
-
-//        mouseEventListener = new MouseListenerClass(this.backgroundPanel);
-//        backgroundPanel.addMouseListener(mouseEventListener);
     }
 
     void initInterface() {

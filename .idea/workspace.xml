@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8dcb2505-7e65-4379-a36f-0559df32cad7" name="Changes" comment="removing comments">
+    <list default="true" id="8dcb2505-7e65-4379-a36f-0559df32cad7" name="Changes" comment="adding a second button to message screen and correcting project version">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/guiApp/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/guiApp/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/guiApp/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/guiApp/MainWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/guiApp/MessageScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/guiApp/MessageScreen.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -195,7 +193,7 @@
       <workItem from="1727477502772" duration="1824000" />
       <workItem from="1727479339613" duration="4612000" />
       <workItem from="1727702345148" duration="89000" />
-      <workItem from="1727702450064" duration="2160000" />
+      <workItem from="1727702450064" duration="3293000" />
     </task>
     <task id="LOCAL-00001" summary="first commit - adding project version 1.0.1">
       <option name="closed" value="true" />
@@ -373,7 +371,23 @@
       <option name="project" value="LOCAL" />
       <updated>1727702851300</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="fixing try catch">
+      <option name="closed" value="true" />
+      <created>1727704774335</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1727704774335</updated>
+    </task>
+    <task id="LOCAL-00024" summary="adding a second button to message screen and correcting project version">
+      <option name="closed" value="true" />
+      <created>1727704864504</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1727704864504</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -412,7 +426,9 @@
     <MESSAGE value="icon change" />
     <MESSAGE value="refactoring and version change" />
     <MESSAGE value="removing comments" />
-    <option name="LAST_COMMIT_MESSAGE" value="removing comments" />
+    <MESSAGE value="fixing try catch" />
+    <MESSAGE value="adding a second button to message screen and correcting project version" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding a second button to message screen and correcting project version" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
