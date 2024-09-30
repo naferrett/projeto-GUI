@@ -4,14 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8dcb2505-7e65-4379-a36f-0559df32cad7" name="Changes" comment="fixing warnings">
+    <list default="true" id="8dcb2505-7e65-4379-a36f-0559df32cad7" name="Changes" comment="removing comments">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/guiApp/EventListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/guiApp/EventListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/guiApp/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/guiApp/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/guiApp/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/guiApp/MainWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/guiApp/MessageScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/guiApp/MessageScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/guiApp/SystemInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/guiApp/SystemInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/guiApp/menu/configMenu/SpeedMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/guiApp/menu/configMenu/SpeedMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/logouni.jpg" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,6 +68,9 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "onboarding.tips.debug.path": "C:/Users/nathf/OneDrive/Documentos/unicamp/matérias/POO II/Projeto-I-GUI/src/main/java/gui/app/Main.java",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
     "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   }
@@ -164,6 +164,13 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-21.0.1-azul-21.0.1-4caba194b151-49bba082" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -187,6 +194,8 @@
       <workItem from="1727465087892" duration="80000" />
       <workItem from="1727477502772" duration="1824000" />
       <workItem from="1727479339613" duration="4612000" />
+      <workItem from="1727702345148" duration="89000" />
+      <workItem from="1727702450064" duration="2160000" />
     </task>
     <task id="LOCAL-00001" summary="first commit - adding project version 1.0.1">
       <option name="closed" value="true" />
@@ -340,7 +349,31 @@
       <option name="project" value="LOCAL" />
       <updated>1727483929343</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="icon change">
+      <option name="closed" value="true" />
+      <created>1727640003627</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1727640003627</updated>
+    </task>
+    <task id="LOCAL-00021" summary="refactoring and version change">
+      <option name="closed" value="true" />
+      <created>1727640087828</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1727640087828</updated>
+    </task>
+    <task id="LOCAL-00022" summary="removing comments">
+      <option name="closed" value="true" />
+      <created>1727702851300</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1727702851300</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -376,7 +409,10 @@
     <MESSAGE value="creating packages and adding log" />
     <MESSAGE value="adding comments on top of each class" />
     <MESSAGE value="fixing warnings" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixing warnings" />
+    <MESSAGE value="icon change" />
+    <MESSAGE value="refactoring and version change" />
+    <MESSAGE value="removing comments" />
+    <option name="LAST_COMMIT_MESSAGE" value="removing comments" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

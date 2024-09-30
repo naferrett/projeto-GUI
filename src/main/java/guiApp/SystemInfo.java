@@ -8,7 +8,7 @@ class SystemInfo {
     public static final String faculty = "FT - Faculdade de Tecnologia";
     public static final String university = "Unicamp - Universidade Estadual de Campinas";
     public static final String name = "Projeto I - GUI";
-    public static final String version = "Ver 1.2.1";
+    public static final String version = "Ver 1.2.4";
     public static final String systemImage = "/system.png";
     public static final String iconImage = "/groupIcon.png";
 

@@ -19,10 +19,14 @@ class MessageScreen extends JDialog implements ActionListener {
     private final JPanel buttonPanel;
     private final ImageDisplayPanel imagePanel;
     private final JTextArea textArea;
+    private final String title;
 
 
     MessageScreen(JFrame mainWindow, String title, String text) throws HeadlessException {
         super(mainWindow, title);
+
+        this.title = title;
+
         setSize(800, 320);
         setResizable(false);
         setLocationRelativeTo(mainWindow);
@@ -43,9 +47,17 @@ class MessageScreen extends JDialog implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent arg0)
-    {
-        this.setVisible(false);
+    public void actionPerformed(ActionEvent event) {
+        String actionCommand = event.getActionCommand();
+
+        if (actionCommand.equals("Close"))
+            this.setVisible(false);
+
+        else if (actionCommand.equals("Next") && this.title.contains("Ajuda"))
+            new MessageScreen((JFrame) this.getOwner(),"Sobre - " + SystemInfo.getVersionName(), SystemInfo.getAbout()).setVisible(true);
+
+        else if (actionCommand.equals("Next") && this.title.contains("Sobre"))
+            new MessageScreen((JFrame) this.getOwner(),"Ajuda - " + SystemInfo.getVersionName(), SystemInfo.getHelp()).setVisible(true);
     }
 
     private JTextArea createTextArea(String text) {
@@ -77,9 +89,25 @@ class MessageScreen extends JDialog implements ActionListener {
 
     private JPanel createButtonPanel() {
         JPanel buttonPanel = new JPanel();
+
         JButton exitButton = new JButton("Fechar");
+        JButton nextButton = new JButton();
+
+        if (this.title.contains("Ajuda"))
+            nextButton.setText("Ir Para 'Sobre'");
+
+        if (this.title.contains("Sobre"))
+            nextButton.setText("Ir Para 'Ajuda'");
+
+        exitButton.setActionCommand("Close");
+        nextButton.setActionCommand("Next");
+
         exitButton.addActionListener(this);
+        nextButton.addActionListener(this);
+
         buttonPanel.add(exitButton);
+        buttonPanel.add(nextButton);
+
         return buttonPanel;
     }
 
