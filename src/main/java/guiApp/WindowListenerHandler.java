@@ -10,10 +10,10 @@ import java.awt.event.WindowListener;
 
 import javax.swing.JOptionPane;
 
-class WindowListenerClass implements WindowListener {
+class WindowListenerHandler implements WindowListener {
     private final MainWindow reference;
 
-    WindowListenerClass(MainWindow reference)
+    WindowListenerHandler(MainWindow reference)
     {
         this.reference = reference;
     }

@@ -122,7 +122,7 @@ public class MainWindow extends JFrame implements Runnable {
     }
 
     private void initListeners() {
-        WindowListenerClass windowEventListener = new WindowListenerClass(this);
+        WindowListenerHandler windowEventListener = new WindowListenerHandler(this);
         this.addWindowListener(windowEventListener);
     }
 
