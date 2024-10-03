@@ -37,7 +37,7 @@ class BackgroundPanel extends JPanel {
         setBackground(backgroundColor);
 
         for (int i = 0; i < currentLine; i++) {
-            int nextIndex = (i + 1) % attractors.length;
+            int nextIndex = (i + 1) % attractors.length; // 'nextIndex' volta a ser 0 quando estiver no último ponto do desenho.
             originalCanvas.drawLine(attractors[i].x, attractors[i].y, attractors[nextIndex].x, attractors[nextIndex].y);
         }
     }
@@ -51,7 +51,6 @@ class BackgroundPanel extends JPanel {
     public void setNoPattern() {
         this.attractors = null;
         currentLine = 0;
-        repaint();
     }
 
     public void setPatternRectangle() {
@@ -69,7 +68,6 @@ class BackgroundPanel extends JPanel {
         attractors[3] = new Point(marginX, maxY - marginY);
 
         currentLine = 0;
-        repaint();
     }
 
     public void setPatternTriangle() {
@@ -85,7 +83,6 @@ class BackgroundPanel extends JPanel {
         attractors[2] = new Point(marginX, maxY - marginY);
 
         currentLine = 0;
-        repaint();
     }
 
     public void setPatternStar() {
@@ -109,18 +106,16 @@ class BackgroundPanel extends JPanel {
         attractors[9] = new Point((int)(0.4 * maxX), (int)(0.3 * maxY));
 
         currentLine = 0;
-        repaint();
     }
 
     public void nextLine() {
-        if (this.attractors == null || this.attractors.length == 0) {
+        if (this.attractors == null) {
             return;
         }
 
         currentLine++;
         if (currentLine > attractors.length) {
-            currentLine = 0;
+            currentLine = 0; // Quando o desenho acabar, 'currentLine' é incrementado mais uma vez, fica maior que 'attractors.lenght', tem seu valor atribuído a 0 e o desenho recomeça.
         }
-        repaint();
     }
 }

@@ -1,3 +1,7 @@
+/* Essa classe é responsável por gerenciar a interface gráfica principal da aplicação,
+* incluindo a exibição de arquivos de texto, controle de menus, a exibição de padrões
+* gráficos animados no fundo, ajuste de velocidade e gerenciamento de threads. */
+
 package guiApp;
 
 import guiApp.file.FileHandler;
@@ -137,19 +141,19 @@ public class MainWindow extends JFrame implements Runnable {
 
     void addMenuItemListener(ActionListener listener, JMenu mainMenu) {
         for(Component target : mainMenu.getMenuComponents()) {
-            if (target instanceof JMenuItem) {
+            if(target instanceof JMenuItem) {
                 ((JMenuItem) target).addActionListener(listener);
             }
 
-            if (target instanceof JMenu) {
+            if(target instanceof JMenu) {
                 addMenuItemListener(listener, (JMenu) target);
             }
         }
     }
 
     void addMenuListeners(ActionListener listener) {
-        for (Component menu : this.getJMenuBar().getComponents()) {
-            if (menu instanceof JMenu) {
+        for(Component menu : this.getJMenuBar().getComponents()) {
+            if(menu instanceof JMenu) {
                 addMenuItemListener(listener, (JMenu) menu);
             }
         }

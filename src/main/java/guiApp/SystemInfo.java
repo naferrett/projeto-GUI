@@ -15,7 +15,6 @@ class SystemInfo {
     static String getAbout() {
         final StringBuffer text = new StringBuffer();
 
-        text.append("\n");
         text.append(university);
         text.append("\n\n");
         text.append(faculty);
@@ -25,7 +24,6 @@ class SystemInfo {
         text.append(name);
         text.append("\n\n");
         text.append(version);
-        text.append("\n");
 
         return (text.toString());
     }

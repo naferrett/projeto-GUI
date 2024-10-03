@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8dcb2505-7e65-4379-a36f-0559df32cad7" name="Changes" comment="test package delete">
+    <list default="true" id="8dcb2505-7e65-4379-a36f-0559df32cad7" name="Changes" comment="WindowListenerClass renamed to WindowListenerHandler">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/guiApp/BackgroundPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/guiApp/BackgroundPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/guiApp/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/guiApp/MainWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/guiApp/SystemInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/guiApp/SystemInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/guiApp/WindowListenerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/guiApp/WindowListenerHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -200,6 +203,7 @@
       <workItem from="1727707535494" duration="713000" />
       <workItem from="1727720296898" duration="1646000" />
       <workItem from="1727726641313" duration="562000" />
+      <workItem from="1727974212661" duration="3099000" />
     </task>
     <task id="LOCAL-00001" summary="first commit - adding project version 1.0.1">
       <option name="closed" value="true" />
@@ -409,7 +413,23 @@
       <option name="project" value="LOCAL" />
       <updated>1727708167457</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="removing MouseListenerClass">
+      <option name="closed" value="true" />
+      <created>1727974352973</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1727974352973</updated>
+    </task>
+    <task id="LOCAL-00028" summary="WindowListenerClass renamed to WindowListenerHandler">
+      <option name="closed" value="true" />
+      <created>1727974546161</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1727974546161</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -427,8 +447,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="first commit - adding project version 1.0.1" />
-    <MESSAGE value="background color change options working" />
     <MESSAGE value="file loaded into the screen" />
     <MESSAGE value="adjusting jlabel" />
     <MESSAGE value="gridlayout to adjust jlabel and textarea" />
@@ -452,7 +470,9 @@
     <MESSAGE value="adding a second button to message screen and correcting project version" />
     <MESSAGE value="adding comments" />
     <MESSAGE value="test package delete" />
-    <option name="LAST_COMMIT_MESSAGE" value="test package delete" />
+    <MESSAGE value="removing MouseListenerClass" />
+    <MESSAGE value="WindowListenerClass renamed to WindowListenerHandler" />
+    <option name="LAST_COMMIT_MESSAGE" value="WindowListenerClass renamed to WindowListenerHandler" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
