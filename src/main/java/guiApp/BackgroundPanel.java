@@ -60,8 +60,8 @@ class BackgroundPanel extends JPanel {
         int maxY = this.getHeight();
         int maxX = this.getWidth();
 
-        int marginX = (int)(0.025 * this.getWidth());
-        int marginY = (int)(0.05 * this.getHeight());
+        int marginX = (int)(0.05 * this.getWidth());
+        int marginY = (int)(0.075 * this.getHeight());
 
         attractors[0] = new Point(marginX, marginY);
         attractors[1] = new Point(maxX - marginX, marginY);

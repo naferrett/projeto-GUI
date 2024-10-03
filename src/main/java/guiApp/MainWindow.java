@@ -21,7 +21,6 @@ public class MainWindow extends JFrame implements Runnable {
     private JTextArea fileText;
     private FileHandler fileHandler;
     private JScrollPane scrollPane;
-    //private MouseListenerClass mouseEventListener;
     BackgroundPanel backgroundPanel;
     private double animationSpeed = 1.0;
 
