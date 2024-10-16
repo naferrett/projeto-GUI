@@ -9,29 +9,29 @@ O objetivo desse projeto é desenvolver uma aplicação Java com interface gráf
 <br>
 
 ## 📝 Descrição do Projeto
-Desenvolver uma aplicação Java completa que utilize uma janela principal (`JFrame`) com os elementos de interface convencionais, como barra de menus (`JMenuBar`), barra de status, título, ícone e outros componentes. A aplicação deverá cumprir os seguintes objetivos:
+O projeto é uma aplicação Java que utiliza uma janela principal (`JFrame`) com os elementos de interface convencionais, como barra de menus (`JMenuBar`), barra de status, título, ícone e outros componentes. A aplicação cumpre os seguintes objetivos:
 
 * Demonstrar a mecânica de ouvintes (implementação interna):  
-O projeto deve implementar corretamente os ouvintes para interações do usuário, incluindo menus, botões e outros componentes.
+O projeto implementa corretamente os ouvintes para interações do usuário, incluindo menus, botões e outros componentes.
 
 * Ler arquivos e apresentar o conteúdo na tela conforme escolha do usuário:  
-O aplicativo deve permitir a leitura de arquivos de texto e exibir seu conteúdo em uma área da janela principal.
+O aplicativo permite a leitura de arquivos de texto e exibir seu conteúdo em uma área da janela principal.
 
 * Mostrar o uso de threads e gráficos dinâmicos por meio de um fundo continuamente animado:  
-A janela principal deve exibir um fundo gráfico que se altera dinamicamente, demonstrando o uso de threads em conjunto com desenhos gráficos.
+A janela principal deve exibe um fundo gráfico que se altera dinamicamente, demonstrando o uso de threads em conjunto com desenhos gráficos.
 
 * Usar diálogos padrão para abrir arquivos:  
-Deve ser utilizado o componente `JFileChooser` para permitir ao usuário selecionar e abrir arquivos no menu “Arquivo”.
+É utilizado o componente `JFileChooser` para permitir ao usuário selecionar e abrir arquivos no menu “Arquivo”.
 
 * Construir um diálogo de ajuda personalizado com imagens, texto rolável e botões:  
-A aplicação deve conter um diálogo de ajuda acessível pelo menu "Ajuda", incluindo imagens, texto rolável e botões interativos.
+A aplicação possui um diálogo de ajuda acessível pelo menu "Ajuda", incluindo imagens, texto rolável e botões interativos.
 
 ## 🖥️ Estrutura da Interface
 - Janela Principal (`JFrame`):  
-  A janela principal deve conter barra de título, ícone da aplicação, barra de status e menus.
+  A janela principal possui barra de título, ícone da aplicação, barra de status e menus.
 
 - Barra de Menus (`JMenuBar`):  
-  Deve conter três menus principais: Arquivo, Configuração e Ajuda.
+  A barra de menus possui três menus principais: Arquivo, Configuração e Ajuda.
 
   Menu Arquivo:
   - Abrir Arquivo: Abre um diálogo para selecionar um arquivo de texto e exibir seu conteúdo.
@@ -46,12 +46,4 @@ A aplicação deve conter um diálogo de ajuda acessível pelo menu "Ajuda", inc
   Menu Ajuda:
   - Ajuda: Abre um diálogo personalizado com explicações sobre a aplicação.
   - Sobre: Mostra informações sobre a aplicação (como versão e autores).
-
-## ☕ Instalando o Projeto
-
-Para instalar o projeto, use esse comando:
-
-```
-git clone https://github.com/naferrett/projeto-GUI.git
-```
 
